@@ -39,7 +39,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   >
                     a Frontend Engineer
                   </span>{" "}
-                  from Zero to Job-Ready
+                  from Zero to Job-Ready.
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 32 }}
