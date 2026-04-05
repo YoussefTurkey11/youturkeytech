@@ -53,6 +53,7 @@ const CollaborateButton = ({ className }: { className?: string }) => (
 const Header = ({ navigationData, className }: HeaderProps) => {
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("#");
 
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 50);
@@ -106,9 +107,12 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                 <NavigationMenuItem key={navItem.title}>
                   <NavigationMenuLink
                     href={navItem.href}
+                    onClick={() => setActive(navItem.href)}
                     className={cn(
                       "px-2 lg:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal",
-                      navItem.isActive ? "bg-background text-foreground" : "",
+                      active === navItem.href
+                        ? "bg-background text-foreground"
+                        : "",
                     )}
                   >
                     {navItem.title}
@@ -160,9 +164,13 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                           <NavigationMenuItem key={item.title}>
                             <NavigationMenuLink
                               href={item.href}
+                              onClick={() => {
+                                setActive(item.href);
+                                setIsOpen(false);
+                              }}
                               className={cn(
-                                "group/nav flex items-center text-2xl font-semibold tracking-tight transition-all p-0 hover:bg-transparent focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent",
-                                item.isActive
+                                "group/nav flex items-center text-2xl font-semibold tracking-tight transition-all p-0 hover:bg-transparent focus:bg-transparent data-active:bg-transparent data-[state=open]:bg-transparent",
+                                active === item.href
                                   ? "text-primary"
                                   : "text-muted-foreground hover:text-foreground hover:translate-x-2",
                               )}
@@ -170,7 +178,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                               <div
                                 className={cn(
                                   "h-0.5 bg-primary transition-all duration-300 overflow-hidden",
-                                  item.isActive
+                                  active === item.href
                                     ? "w-4 mr-2 opacity-100"
                                     : "w-0 opacity-0 group-hover/nav:w-4 group-hover/nav:mr-2 group-hover/nav:opacity-100",
                                 )}

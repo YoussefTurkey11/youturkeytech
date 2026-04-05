@@ -57,7 +57,7 @@ const Pricing = () => {
   };
 
   return (
-    <section className="bg-background py-10 xl:py-0">
+    <section className="bg-background py-10 xl:py-0" id="roadmap">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-16 lg:py-20 sm:py-16 py-8">
         <div className="flex flex-col gap-8 md:gap-12 justify-center items-center w-full">
           {/* Heading */}

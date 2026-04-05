@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import AccordionMotionServices from "../accordion/accordion-07";
@@ -130,27 +130,23 @@ type FadeInStackProps = {
   hovering?: boolean;
 };
 
-const FadeInStack = ({ className, tabs, hovering }: FadeInStackProps) => {
+const FadeInStack = ({ className, tabs }: FadeInStackProps) => {
+  const activeTab = tabs[0];
+
   return (
-    <div className="relative w-full h-150 max-h-200">
-      {tabs.map((tab, idx) => (
+    <div className="relative w-full">
+      <AnimatePresence mode="wait">
         <motion.div
-          key={tab.value}
-          layoutId={tab.value}
-          style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -15 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: idx === 0 ? [0, 40, 0] : 0,
-          }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
+          key={activeTab.value}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -40, scale: 0.98 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
+          className={cn("w-full", className)}
         >
-          {tab.content}
+          {activeTab.content}
         </motion.div>
-      ))}
+      </AnimatePresence>
     </div>
   );
 };
@@ -158,7 +154,10 @@ const FadeInStack = ({ className, tabs, hovering }: FadeInStackProps) => {
 export default function Timetable() {
   return (
     <>
-      <div className="perspective-[1000px] relative flex flex-col max-w-5xl mx-auto w-full items-center justify-center my-10 px-7">
+      <div
+        className="perspective-[1000px] relative flex flex-col max-w-5xl mx-auto w-full items-center justify-center my-10 px-7"
+        id="timetable"
+      >
         {/* Heading */}
         <div className="mb-10 flex flex-col gap-4 justify-center items-center animate-in fade-in slide-in-from-top-8 duration-700 ease-in-out">
           {/* Badge */}

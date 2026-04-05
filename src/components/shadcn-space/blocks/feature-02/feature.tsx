@@ -1,18 +1,20 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { Asterisk, LucideIcon } from "lucide-react";
 import { motion } from "motion/react";
 
 type Features = {
   icon: LucideIcon;
   title: string;
+  color: string;
   content: string;
 }[];
 
 const Feature = ({ featureData }: { featureData: Features }) => {
   return (
-    <section>
+    <section id="projects">
       <div className="lg:py-20 sm:py-16 py-8 px-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <div className="flex flex-col gap-8 md:gap-16">
@@ -65,7 +67,12 @@ const Feature = ({ featureData }: { featureData: Features }) => {
                       ease: [0.21, 0.47, 0.32, 0.98],
                     }}
                   >
-                    <Card className="py-10 h-full border-t-4 border-t-transparent transition-all duration-300 hover:border-t-primary">
+                    <Card
+                      className={cn(
+                        "py-10 h-full border-t-4 border-t-transparent transition-all duration-300",
+                        value.color,
+                      )}
+                    >
                       <CardContent className="px-8 flex flex-col gap-6">
                         <div className="flex flex-col gap-3">
                           <div className="flex items-center gap-4 mb-5">

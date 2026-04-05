@@ -3,29 +3,21 @@ import { NavigationSection } from "@/components/shadcn-space/blocks/hero-01/head
 
 export const navigationData: NavigationSection[] = [
   {
-    title: "Home",
+    title: "Intro",
     href: "#",
     isActive: true,
   },
   {
-    title: "About us",
-    href: "#",
+    title: "Roadmap",
+    href: "#roadmap",
   },
   {
-    title: "Services",
-    href: "#",
+    title: "Timetable",
+    href: "#timetable",
   },
   {
-    title: "Team",
-    href: "#",
-  },
-  {
-    title: "Pricing",
-    href: "#",
-  },
-  {
-    title: "Awards",
-    href: "#",
+    title: "Projects",
+    href: "#projects",
   },
 ];
 
