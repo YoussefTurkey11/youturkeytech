@@ -155,7 +155,7 @@ export default function Timetable() {
   return (
     <>
       <div
-        className="perspective-[1000px] relative flex flex-col max-w-5xl mx-auto w-full items-center justify-center my-10 px-7"
+        className="perspective-[1000px] relative flex flex-col max-w-5xl mx-auto w-full items-center justify-center my-10 px-7 scroll-mt-20"
         id="timetable"
       >
         {/* Heading */}
@@ -170,11 +170,11 @@ export default function Timetable() {
           {/* Heading */}
           <div className="max-w-3xs sm:max-w-md mx-auto text-center">
             <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
-              Complete course timetable
+              Every session. Every topic.
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg font-normal mt-4">
-              Every session, every topic — fully detailed. Expand any level to
-              see exactly what you'll learn.
+              Expand any level to see the complete breakdown — exactly what
+              you'll learn, lesson by lesson.
             </p>
           </div>
         </div>

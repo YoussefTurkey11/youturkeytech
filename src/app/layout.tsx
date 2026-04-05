@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/shadcn-space/blocks/hero-01/header";
 import { navigationData } from "@/data/db";
 import Footer from "@/components/layouts/Footer";
+import { Skiper89 } from "@/components/ui/skiper-ui/skiper89";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -41,9 +43,12 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <Header navigationData={navigationData} />
-        {children}
-        <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header navigationData={navigationData} />
+          {children}
+          <Skiper89 />
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

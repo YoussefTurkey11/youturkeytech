@@ -21,6 +21,7 @@ import Logo from "@/assets/logo/logo";
 import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export type NavigationSection = {
   title: string;
@@ -125,6 +126,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
         {/* Desktop CTA */}
         <div className="flex gap-4">
+          <ThemeToggle />
           <CollaborateButton className="hidden lg:flex" />
 
           <div className="lg:hidden">

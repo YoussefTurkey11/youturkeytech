@@ -14,7 +14,7 @@ type Features = {
 
 const Feature = ({ featureData }: { featureData: Features }) => {
   return (
-    <section id="projects">
+    <section id="projects" className="scroll-mt-10">
       <div className="lg:py-20 sm:py-16 py-8 px-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-8">
           <div className="flex flex-col gap-8 md:gap-16">
@@ -26,17 +26,17 @@ const Feature = ({ featureData }: { featureData: Features }) => {
                 duration: 0.8,
                 ease: [0.21, 0.47, 0.32, 0.98],
               }}
-              className="flex flex-col items-center justify-center gap-4 max-w-lg mx-auto"
+              className="flex flex-col items-center justify-center gap-4 max-w-lg mx-auto text-center"
             >
               <Badge variant={"outline"} className="px-3 py-1 h-auto text-sm">
                 Portfolio projects
               </Badge>
               <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
-                Build. Ship. Get hired.
+                Real projects. Real portfolio. Real jobs.
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg font-normal mt-4">
-                Every level ends with a real, deployable project — not a
-                tutorial clone. Something you own and can show employers.
+                Every level ends with a milestone project you deploy, own, and
+                show to employers. Not clones — yours.
               </p>
             </motion.div>
             <motion.div

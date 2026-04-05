@@ -51,7 +51,7 @@ function BrandSlider({ brandList }: { brandList: BrandList[] }) {
                         alt={brand.name}
                         width={100}
                         height={100}
-                        className="hidden dark:block w-36 h-8 mr-12 lg:mr-20"
+                        className="hidden dark:flex mr-12 lg:mr-20"
                       />
                     </div>
                   ))}

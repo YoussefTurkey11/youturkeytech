@@ -39,7 +39,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   >
                     a Frontend Engineer
                   </span>{" "}
-                  from Zero to Advanced
+                  from Zero to Job-Ready
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 32 }}
@@ -47,10 +47,19 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
                   className="text-base font-normal max-w-2xl text-muted-foreground"
                 >
-                  A complete, structured journey through modern web development
-                  — real projects, real tools, real results. No fluff. Just
-                  skills that get you hired.
+                  A complete hands-on program by YouTurkeyTech designed to take
+                  you from beginner to professional with real-world projects,
+                  modern tools, and industry best practices.
                 </motion.p>
+                <motion.span
+                  initial={{ opacity: 0, y: 32 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
+                  className="text-base font-normal max-w-lg text-muted-foreground"
+                >
+                  Crafted and taught by <strong>Youssef Turkey</strong> ·
+                  Frontend Developer & Instructor
+                </motion.span>
               </div>
               <motion.div
                 initial={{ opacity: 0, y: 32 }}

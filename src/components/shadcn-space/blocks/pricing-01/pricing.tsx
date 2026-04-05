@@ -57,7 +57,7 @@ const Pricing = () => {
   };
 
   return (
-    <section className="bg-background py-10 xl:py-0" id="roadmap">
+    <section className="bg-background py-10 xl:py-0 scroll-mt-10" id="roadmap">
       <div className="max-w-7xl mx-auto px-4 lg:px-8 xl:px-16 lg:py-20 sm:py-16 py-8">
         <div className="flex flex-col gap-8 md:gap-12 justify-center items-center w-full">
           {/* Heading */}
@@ -72,11 +72,11 @@ const Pricing = () => {
             {/* Heading */}
             <div className="max-w-3xs sm:max-w-md mx-auto text-center">
               <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
-                Your path from zero to job-ready
+                Three levels. One complete journey.
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg font-normal mt-4">
-                Three levels, each building on the last — with a real project at
-                every stage to cement your skills.
+                Each level builds on the last — by the end you won't just know
+                frontend, you'll think and work like a professional engineer.
               </p>
             </div>
           </div>
@@ -105,19 +105,9 @@ const Pricing = () => {
                         <Badge className="py-1 px-3 text-sm font-normal leading-5 w-fit h-7">
                           {items.plan_name}
                         </Badge>
-                        <p className="text-sm font-normal text-muted-foreground max-w-56">
+                        <p className="text-sm font-normal text-muted-foreground w-full sm:max-w-56">
                           {items.plan_descp}
                         </p>
-                      </div>
-                      <div className="flex flex-col gap-4">
-                        <Button className="relative bg-white hover:bg-white hover:text-black dark:hover:text-black text-black text-sm font-medium rounded-full h-12 p-1 ps-6 pe-14 group transition-all duration-500 hover:ps-14 hover:pe-6 w-fit overflow-hidden cursor-pointer">
-                          <span className="relative z-10 transition-all duration-500">
-                            Enroll Now
-                          </span>
-                          <div className="absolute right-1 w-10 h-10 bg-black text-white rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-44px)] group-hover:rotate-45">
-                            <ArrowUpRight size={16} />
-                          </div>
-                        </Button>
                       </div>
                     </div>
                     <Separator
