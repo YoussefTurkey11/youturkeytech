@@ -70,7 +70,7 @@ const Pricing = () => {
               Course roadmap
             </Badge>
             {/* Heading */}
-            <div className="max-w-3xs sm:max-w-md mx-auto text-center">
+            <div className="w-full sm:max-w-md mx-auto text-center">
               <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
                 Three levels. One complete journey.
               </h2>

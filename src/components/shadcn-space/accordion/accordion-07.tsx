@@ -22,7 +22,7 @@ const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <div className="flex items-center justify-center px-4 py-8 w-full">
+    <div className="flex items-center justify-center w-full">
       <div className="w-full max-w-lg">
         <Accordion
           value={openItems}
@@ -41,7 +41,7 @@ const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <AccordionTrigger className="hover:no-underline **:data-[slot=accordion-trigger-icon]:hidden px-1 py-5 cursor-pointer">
+                <AccordionTrigger className="hover:no-underline **:data-[slot=accordion-trigger-icon]:hidden cursor-pointer">
                   <div className="flex items-center gap-6 w-full">
                     {/* Number bubble */}
                     <div className="relative flex h-10 w-10 items-center justify-center shrink-0">
