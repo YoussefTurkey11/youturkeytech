@@ -7,6 +7,7 @@ import { navigationData } from "@/data/db";
 import Footer from "@/components/layouts/Footer";
 import { Skiper89 } from "@/components/ui/skiper-ui/skiper89";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import HeadAdsServer from "@/components/layouts/HeadAds/HeadAdsServer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
@@ -44,6 +46,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <HeadAdsServer />
           <Header navigationData={navigationData} />
           {children}
           <Skiper89 />
