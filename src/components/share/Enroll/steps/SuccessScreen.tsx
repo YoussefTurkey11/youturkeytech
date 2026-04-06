@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
-import { Button } from "@/components/ui/button";
 import { EnrollFormData } from "@/validation/Enroll.schema";
 import { CheckCircle2 } from "lucide-react";
 

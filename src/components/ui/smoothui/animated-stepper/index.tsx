@@ -21,17 +21,6 @@ export interface AnimatedStepperProps {
   className?: string;
 }
 
-/* ─────────────────────────────────────────────────────────
- * ANIMATION STORYBOARD
- *
- *    0ms   stepper enters viewport
- *  100ms   step circles stagger in (50ms each)
- *  click   active ring pulse + circle scale bounce
- *  step    progress line fills with spring
- *  done    checkmark draws with pathLength animation
- *  slide   content slides directionally with crossfade
- * ───────────────────────────────────────────────────────── */
-
 const SPRING = {
   type: "spring" as const,
   duration: 0.25,

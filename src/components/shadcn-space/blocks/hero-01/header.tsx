@@ -18,11 +18,8 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/assets/logo/logo";
-import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import Enroll from "@/components/ui/Enroll";
 import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
 
 export type NavigationSection = {

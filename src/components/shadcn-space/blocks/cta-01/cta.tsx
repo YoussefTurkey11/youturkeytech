@@ -1,14 +1,10 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion } from "motion/react";
-import Enroll from "@/components/ui/Enroll";
 import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
 
-type CTAProps = {
-  className?: string;
-};
-
-const CTA = ({ className }: CTAProps) => {
+const CTA = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const ref = useRef(null);
 
   const bottomAnimation = {
@@ -38,7 +34,7 @@ const CTA = ({ className }: CTAProps) => {
                   projects and career opportunities.
                 </p>
               </div>
-              <EnrollmentForm />
+              <EnrollmentForm open={isDialogOpen} setOpen={setIsDialogOpen} />
             </motion.div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -13,15 +12,15 @@ const DialogFormEnroll = ({
   setOpen,
   setIsOpenSheet,
 }: {
-  open: boolean;
-  setOpen: (open: boolean) => void;
+  open?: boolean;
+  setOpen?: (open: boolean) => void;
   setIsOpenSheet?: (open: boolean) => void;
 }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <div
         onClick={() => {
-          setOpen(true);
+          setOpen?.(true);
 
           setTimeout(() => {
             setIsOpenSheet?.(false);

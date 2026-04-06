@@ -1,9 +1,7 @@
 "use client";
 
 import { Instrument_Serif } from "next/font/google";
-import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
-import { ArrowUpRight, Play } from "lucide-react";
 import DialogPreview from "@/components/share/Enroll/DialogPreview";
 
 const instrumentSerif = Instrument_Serif({
