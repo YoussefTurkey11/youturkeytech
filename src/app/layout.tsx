@@ -8,6 +8,7 @@ import Footer from "@/components/layouts/Footer";
 import { Skiper89 } from "@/components/ui/skiper-ui/skiper89";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import HeadAdsServer from "@/components/layouts/HeadAds/HeadAdsServer";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -49,6 +50,7 @@ export default function RootLayout({
           <HeadAdsServer />
           <Header navigationData={navigationData} />
           {children}
+          <Toaster />
           <Skiper89 />
           <Footer />
         </ThemeProvider>

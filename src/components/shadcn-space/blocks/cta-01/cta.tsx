@@ -2,6 +2,7 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
 import Enroll from "@/components/ui/Enroll";
+import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
 
 type CTAProps = {
   className?: string;
@@ -37,7 +38,7 @@ const CTA = ({ className }: CTAProps) => {
                   projects and career opportunities.
                 </p>
               </div>
-              <Enroll className="py-5.5" />
+              <EnrollmentForm />
             </motion.div>
           </div>
         </div>

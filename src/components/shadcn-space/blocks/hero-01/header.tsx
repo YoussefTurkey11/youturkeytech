@@ -23,6 +23,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import Enroll from "@/components/ui/Enroll";
+import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
 
 export type NavigationSection = {
   title: string;
@@ -39,6 +40,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("#");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 50);
@@ -111,7 +113,9 @@ const Header = ({ navigationData, className }: HeaderProps) => {
         {/* Desktop CTA */}
         <div className="flex gap-4">
           <ThemeToggle />
-          <Enroll className="hidden lg:flex" />
+          <div className="hidden lg:flex">
+            <EnrollmentForm open={isDialogOpen} setOpen={setIsDialogOpen} />
+          </div>
 
           <div className="lg:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -177,7 +181,11 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                     </NavigationMenu>
 
                     <div className="w-fit">
-                      <Enroll />
+                      <EnrollmentForm
+                        open={isDialogOpen}
+                        setOpen={setIsDialogOpen}
+                        setIsOpenSheet={setIsOpen}
+                      />
                     </div>
                   </div>
 
