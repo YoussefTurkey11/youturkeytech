@@ -1,0 +1,24 @@
+{
+  "Header": {
+    "menu": "Menu"
+  },
+  "Landpage": {
+    "mainHeadText": {
+      "part1": "Become",
+      "part2": "a Frontend Engineer",
+      "part3": "from Zero to Job-Ready"
+    },
+    "mainDesc": "A complete hands-on program by YouTurkeyTech designed to take you from beginner to professional with real-world projects, modern tools, and industry best practices.",
+    "taughtBy": {
+      "part1": "Crafted and taught by",
+      "part2": "Youssef Turkey",
+      "part3": "Frontend Developer & Instructor"
+    },
+    "trustedBy": "Trusted by 250+ students",
+    "companiesTrusted": "Trusted by leading academies, learning platforms, and educational organizations"
+  },
+  "CTAButton": {
+    "enrollNow": "Enroll Now",
+    "viewDemo": "View Demo"
+  }
+}

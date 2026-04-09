@@ -1,6 +1,7 @@
 "use client";
 import { Marquee } from "@/components/shadcn-space/animations/marquee";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export interface BrandList {
@@ -10,6 +11,8 @@ export interface BrandList {
 }
 
 function BrandSlider({ brandList }: { brandList: BrandList[] }) {
+  const t = useTranslations("Landpage");
+
   return (
     <section>
       <div className="py-6 md:py-10">
@@ -25,15 +28,18 @@ function BrandSlider({ brandList }: { brandList: BrandList[] }) {
               <div className="flex items-center justify-center gap-4">
                 <div className="hidden md:block h-0.5 w-40 bg-linear-to-l from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
                 <p className="text-sm font-normal sm:px-2 px-10 text-muted-foreground text-center">
-                  Trusted by leading academies, learning platforms, and
-                  educational organizations
+                  {t("companiesTrusted")}
                 </p>
                 <div className="hidden md:block h-0.5 w-40 bg-linear-to-r from-muted-foreground to-white dark:from-muted-foreground dark:to-transparent opacity-20" />
               </div>
             </div>
             {brandList && brandList.length > 0 && (
               <div className="py-4">
-                <Marquee pauseOnHover className="[--duration:20s] p-0">
+                <Marquee
+                  pauseOnHover
+                  className="[--duration:20s] p-0"
+                  dir="ltr"
+                >
                   {brandList.map((brand, index) => (
                     <div
                       key={index}

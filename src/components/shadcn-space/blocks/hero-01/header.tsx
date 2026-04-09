@@ -19,11 +19,14 @@ import { Icon } from "@iconify/react";
 import { Menu, X } from "lucide-react";
 import Logo from "@/assets/logo/logo";
 import { motion } from "motion/react";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { ThemeToggle } from "@/components/share/ThemeToggle";
 import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
+import LanguageSwitcher from "@/components/share/LanguageSwitcher";
+import { useLocale, useTranslations } from "next-intl";
 
 export type NavigationSection = {
-  title: string;
+  titleAr: string;
+  titleEn: string;
   href: string;
   isActive?: boolean;
 };
@@ -34,6 +37,9 @@ type HeaderProps = {
 };
 
 const Header = ({ navigationData, className }: HeaderProps) => {
+  const t = useTranslations("Landpage");
+  const locale = useLocale();
+
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("#");
@@ -88,7 +94,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
           <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
             <NavigationMenuList className="flex gap-0">
               {navigationData.map((navItem) => (
-                <NavigationMenuItem key={navItem.title}>
+                <NavigationMenuItem key={navItem.titleEn}>
                   <NavigationMenuLink
                     href={navItem.href}
                     onClick={() => setActive(navItem.href)}
@@ -99,7 +105,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                         : "",
                     )}
                   >
-                    {navItem.title}
+                    {locale === "en" ? navItem.titleEn : navItem.titleAr}
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               ))}
@@ -109,6 +115,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
         {/* Desktop CTA */}
         <div className="flex gap-4">
+          <LanguageSwitcher />
           <ThemeToggle />
           <div className="hidden lg:flex">
             <EnrollmentForm open={isDialogOpen} setOpen={setIsDialogOpen} />
@@ -119,7 +126,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
               <SheetTrigger id="mobile-menu-trigger">
                 <span className="rounded-full border border-border p-2 block">
                   <Menu width={20} height={20} />
-                  <span className="sr-only">Menu</span>
+                  <span className="sr-only">{t("Header.menu")}</span>
                 </span>
               </SheetTrigger>
 
@@ -141,14 +148,16 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
                 <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
                   <div className="flex flex-col gap-8">
-                    <SheetTitle className="sr-only">Menu</SheetTitle>
+                    <SheetTitle className="sr-only">
+                      {t("Header.menu")}
+                    </SheetTitle>
                     <NavigationMenu
                       orientation="vertical"
                       className="items-start flex-none"
                     >
                       <NavigationMenuList className="flex flex-col items-start gap-3">
                         {navigationData.map((item) => (
-                          <NavigationMenuItem key={item.title}>
+                          <NavigationMenuItem key={item.titleEn}>
                             <NavigationMenuLink
                               href={item.href}
                               onClick={() => {
@@ -170,7 +179,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                                     : "w-0 opacity-0 group-hover/nav:w-4 group-hover/nav:mr-2 group-hover/nav:opacity-100",
                                 )}
                               />
-                              {item.title}
+                              {locale === "en" ? item.titleEn : item.titleAr}
                             </NavigationMenuLink>
                           </NavigationMenuItem>
                         ))}

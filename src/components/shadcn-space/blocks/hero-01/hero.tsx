@@ -1,13 +1,19 @@
 "use client";
 
-import { Instrument_Serif } from "next/font/google";
+import { Aref_Ruqaa, Instrument_Serif } from "next/font/google";
 import { motion } from "motion/react";
 import DialogPreview from "@/components/share/Enroll/DialogPreview";
+import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: ["400"],
   style: ["italic"],
+});
+const arefRuqaa = Aref_Ruqaa({
+  subsets: ["arabic"],
+  weight: ["400"],
 });
 
 export type AvatarList = {
@@ -19,6 +25,9 @@ type HeroSectionProps = {
 };
 
 function HeroSection({ avatarList }: HeroSectionProps) {
+  const t = useTranslations("Landpage");
+  const locale = useLocale();
+
   return (
     <section className="px-7">
       <div className="w-full h-full relative">
@@ -32,13 +41,13 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, ease: "easeInOut" }}
                   className="lg:text-8xl md:text-7xl text-5xl font-medium leading-14 md:leading-20 lg:leading-24"
                 >
-                  Become{" "}
+                  {t("mainHeadText.part1")}{" "}
                   <span
-                    className={`${instrumentSerif.className} tracking-tight`}
+                    className={`${locale === "en" ? instrumentSerif.className : arefRuqaa.className}`}
                   >
-                    a Frontend Engineer
+                    {t("mainHeadText.part2")}
                   </span>{" "}
-                  from Zero to Job-Ready.
+                  {t("mainHeadText.part3")}.
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 32 }}
@@ -46,9 +55,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
                   className="text-base font-normal max-w-2xl text-muted-foreground"
                 >
-                  A complete hands-on program by YouTurkeyTech designed to take
-                  you from beginner to professional with real-world projects,
-                  modern tools, and industry best practices.
+                  {t("mainDesc")}
                 </motion.p>
                 <motion.span
                   initial={{ opacity: 0, y: 32 }}
@@ -56,8 +63,15 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   transition={{ duration: 1, delay: 0.1, ease: "easeInOut" }}
                   className="text-base font-normal max-w-lg text-muted-foreground"
                 >
-                  Crafted and taught by <strong>Youssef Turkey</strong> ·
-                  Frontend Developer & Instructor
+                  {t("taughtBy.part1")}{" "}
+                  <Link
+                    href={"https://youturkey11.vercel.app/"}
+                    target="_blank"
+                    className="px-1 font-bold hover:underline hover:text-blue-500 transition-all duration-300"
+                  >
+                    {t("taughtBy.part2")}
+                  </Link>
+                  {t("taughtBy.part3")}
                 </motion.span>
               </div>
               <motion.div
@@ -93,7 +107,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                       ))}
                     </div>
                     <p className="sm:text-sm text-xs font-normal text-muted-foreground">
-                      Trusted by 250+ students
+                      {t("trustedBy")}
                     </p>
                   </div>
                 </div>

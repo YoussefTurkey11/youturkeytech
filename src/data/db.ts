@@ -1,22 +1,28 @@
 import { AccordionItem } from "@/components/shadcn-space/accordion/accordion-07";
+import { BrandList } from "@/components/shadcn-space/blocks/hero-01/brand-slider";
 import { NavigationSection } from "@/components/shadcn-space/blocks/hero-01/header";
+import { AvatarList } from "@/components/shadcn-space/blocks/hero-01/hero";
 
 export const navigationData: NavigationSection[] = [
   {
-    title: "Intro",
+    titleAr: "المقدمة",
+    titleEn: "Intro",
     href: "#",
     isActive: true,
   },
   {
-    title: "Roadmap",
+    titleAr: "الخريطة",
+    titleEn: "Roadmap",
     href: "#roadmap",
   },
   {
-    title: "Timetable",
+    titleAr: "جدول الزمني",
+    titleEn: "Timetable",
     href: "#timetable",
   },
   {
-    title: "Projects",
+    titleAr: "المشاريع",
+    titleEn: "Projects",
     href: "#projects",
   },
 ];
@@ -199,5 +205,43 @@ export const advancedLevels: AccordionItem[] = [
       "Vercel deployment, domain basics, common issues",
       "ESLint, Prettier, Jest, React Testing Library, CI/CD",
     ],
+  },
+];
+
+export const avatarList: AvatarList[] = [
+  {
+    image: "https://images.shadcnspace.com/assets/profiles/user-1.jpg",
+  },
+  {
+    image: "https://images.shadcnspace.com/assets/profiles/user-2.jpg",
+  },
+  {
+    image: "https://images.shadcnspace.com/assets/profiles/user-3.jpg",
+  },
+  {
+    image: "https://images.shadcnspace.com/assets/profiles/user-5.jpg",
+  },
+];
+
+export const brandList: BrandList[] = [
+  {
+    image: "/images/eyouth.png",
+    lightimg: "/images/eyouth.png",
+    name: "EYouth",
+  },
+  {
+    image: "/images/nti.png",
+    lightimg: "/images/nti.png",
+    name: "NTI - National Telecommunication Institute",
+  },
+  {
+    image: "/images/graphitopia.jpg",
+    lightimg: "/images/graphitopia.jpg",
+    name: "Graphitopia",
+  },
+  {
+    image: "/images/sis.jpg",
+    lightimg: "/images/sis.jpg",
+    name: "SIS Platform",
   },
 ];

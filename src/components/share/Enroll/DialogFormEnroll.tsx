@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../../ui/dialog";
-import Enroll from "../../ui/Enroll";
+import Enroll from "../Enroll";
 import FormEnroll from "./FromEnroll";
 
 const DialogFormEnroll = ({
