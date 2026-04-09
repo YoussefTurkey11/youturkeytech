@@ -12,10 +12,12 @@ import {
   Status,
 } from "@/validation/Enroll.schema";
 import SuccessScreen from "./steps/SuccessScreen";
+import { useLocale } from "next-intl";
 
 const FormEnroll = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const locale = useLocale() as "en" | "ar";
 
   const form = useForm<EnrollFormData>({
     resolver: zodResolver(enrollSchema),
@@ -72,6 +74,7 @@ const FormEnroll = () => {
         onStepChange={setCurrentStep}
         steps={stepsEnroll.map((step) => ({
           ...step,
+          label: locale === "ar" ? step.labelAr : step.labelEn,
           content:
             typeof step.content === "function"
               ? step.content(form)
@@ -86,10 +89,16 @@ const FormEnroll = () => {
           variant="outline"
           className="rounded-full"
         >
-          Previous
+          {locale === "en" ? "Previous" : "السابق"}
         </Button>
         <Button onClick={handleNext} className="rounded-full">
-          {currentStep === stepsEnroll.length - 1 ? "Complete" : "Continue"}
+          {currentStep === stepsEnroll.length - 1
+            ? locale === "en"
+              ? "Complete"
+              : "اكتمال"
+            : locale === "en"
+              ? "Continue"
+              : "متابعة"}
         </Button>
       </div>
     </div>

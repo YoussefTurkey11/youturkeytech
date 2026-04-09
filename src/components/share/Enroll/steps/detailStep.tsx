@@ -12,8 +12,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
 
 const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
+  const t = useTranslations("FormEnroll");
   const {
     register,
     setValue,
@@ -23,9 +25,11 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
   return (
     <div className="space-y-5 mt-5">
       <div>
-        <h2 className="text-2xl font-semibold tracking-tight">Almost there!</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">
+          {t("detailStep.title")}
+        </h2>
         <p className="text-muted-foreground mt-1">
-          One last thing and you're in the program.
+          {t("detailStep.description")}
         </p>
       </div>
 
@@ -33,7 +37,7 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
         {/* How did you hear about us? */}
         <section className="space-y-3">
           <Label className="text-md sm:text-lg font-semibold">
-            How did you hear about us? <span className="text-red-500">*</span>
+            {t("detailStep.heardFrom")} <span className="text-red-500">*</span>
           </Label>
           <Select
             onValueChange={(value) =>
@@ -48,7 +52,7 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
             </SelectTrigger>
             <SelectContent className={"rounded-xl"}>
               <SelectGroup>
-                <SelectLabel>Select a source...</SelectLabel>
+                <SelectLabel>{t("detailStep.select")}</SelectLabel>
                 <SelectItem value="youtube">YouTube</SelectItem>
                 <SelectItem value="instagram">Instagram</SelectItem>
                 <SelectItem value="facebook">Facebook</SelectItem>
@@ -56,7 +60,7 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
                 <SelectItem value="tiktok">TikTok</SelectItem>
                 <SelectItem value="referral">Friend / Referral</SelectItem>
                 <SelectItem value="google">Google Search</SelectItem>
-                <SelectItem value="other">Other</SelectItem>
+                <SelectItem value="other">{t("detailStep.other")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -68,11 +72,11 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
         {/* Notes (optional) */}
         <section className="space-y-3">
           <Label className="text-md sm:text-lg font-semibold">
-            Notes (optional)
+            {t("detailStep.notes")}
           </Label>
           <Textarea
             className="rounded-xl"
-            placeholder="Anything else you'd like us to know?"
+            placeholder={t("detailStep.notesPlaceholder")}
             {...register("notes")}
           />
         </section>

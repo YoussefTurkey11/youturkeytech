@@ -2,11 +2,12 @@
 
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
-import { EnrollFormData } from "@/validation/Enroll.schema";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const SuccessScreen = ({ formData }: { formData: EnrollFormData }) => {
-  // تشغيل الاحتفال عند تحميل الكومبوننت
+const SuccessScreen = () => {
+  const t = useTranslations("FormEnroll");
+
   useEffect(() => {
     const launchConfetti = () => {
       // انفجار رئيسي من الأعلى
@@ -75,10 +76,10 @@ const SuccessScreen = ({ formData }: { formData: EnrollFormData }) => {
               id="success-title"
               className="text-5xl font-bold tracking-tight cursor-pointer hover:scale-105 transition-transform"
             >
-              You're in! 🎉
+              {t("successScreen.title")} 🎉
             </h2>
             <p className="text-xl text-muted-foreground mt-2">
-              Welcome to{" "}
+              {t("successScreen.welcome")}{" "}
               <span className="font-semibold text-primary">YouTubeTech</span>
             </p>
           </div>
@@ -86,38 +87,43 @@ const SuccessScreen = ({ formData }: { formData: EnrollFormData }) => {
 
         {/* Description */}
         <p className="text-muted-foreground max-w-md text-lg">
-          We'll review your enrollment and reach out to you shortly via email
-          and WhatsApp.
+          {t("successScreen.description")}
         </p>
 
         {/* Features Grid */}
         <div className="grid gap-4 w-full max-w-md mt-6">
-          <div className="flex items-start gap-3 text-left p-4 rounded-2xl border bg-card">
+          <div className="flex items-start gap-3 p-4 rounded-2xl border bg-card">
             <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-            <div>
-              <h3 className="font-semibold">WhatsApp Group</h3>
+            <div className="flex flex-col items-start">
+              <h3 className="font-semibold">
+                {t("successScreen.features.whatsappGroup")}
+              </h3>
               <p className="text-sm text-muted-foreground">
-                We'll send you the group link within 24 hours
+                {t("successScreen.features.whatsappGroupDescription")}
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3 text-left p-4 rounded-2xl border bg-card">
+          <div className="flex items-start gap-3 p-4 rounded-2xl border bg-card">
             <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-            <div>
-              <h3 className="font-semibold">Confirmation Email</h3>
+            <div className="flex flex-col items-start">
+              <h3 className="font-semibold">
+                {t("successScreen.features.confirmationEmail")}
+              </h3>
               <p className="text-sm text-muted-foreground">
-                Check your inbox for all enrollment details
+                {t("successScreen.features.confirmationEmailDescription")}
               </p>
             </div>
           </div>
 
-          <div className="flex items-start gap-3 text-left p-4 rounded-2xl border bg-card">
+          <div className="flex items-start gap-3 p-4 rounded-2xl border bg-card">
             <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
-            <div>
-              <h3 className="font-semibold">Course Starts Soon</h3>
+            <div className="flex flex-col items-start">
+              <h3 className="font-semibold">
+                {t("successScreen.features.courseStartsSoon")}
+              </h3>
               <p className="text-sm text-muted-foreground">
-                Get ready — your frontend journey begins here!
+                {t("successScreen.features.courseStartsSoonDescription")}
               </p>
             </div>
           </div>

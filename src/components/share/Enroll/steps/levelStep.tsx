@@ -6,42 +6,51 @@ import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Star, Code2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 
 const levelOptions = [
   {
     value: Level.Beginner,
-    title: "Beginner",
-    description: "Start from zero — no experience needed at all",
+    titleEn: "Beginner",
+    titleAr: "مبتدئ",
+    descriptionEn: "Start from zero — no experience needed at all",
+    descriptionAr: "ابدأ من الصفر — لا حاجة لخبرة",
     icon: Star,
     color: "text-gray-500",
   },
   {
     value: Level.Intermediate,
-    title: "Intermediate",
-    description: "You know the basics and want to level up fast",
+    titleEn: "Intermediate",
+    titleAr: "متوسط",
+    descriptionEn: "You know the basics and want to level up fast",
+    descriptionAr: "تعرف على الأساسيات وتريد التطور بسرعة",
     icon: Code2,
     color: "text-gray-500",
   },
   {
     value: Level.Advanced,
-    title: "Expert",
-    description: "Advanced topics, TypeScript, Next.js & real-world projects",
+    titleEn: "Advanced",
+    titleAr: "متقدم",
+    descriptionEn: "Advanced topics, TypeScript, Next.js & real-world projects",
+    descriptionAr: "مواضيع متقدمة, TypeScript, Next.js & مشاريع واقعية",
     icon: Sparkles,
     color: "text-gray-500",
   },
 ];
 
 const LevelStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
+  const t = useTranslations("FormEnroll");
+  const locale = useLocale();
   const { control } = form;
 
   return (
     <div className="space-y-6 mt-6">
       <div>
         <h2 className="text-2xl font-semibold tracking-tight">
-          Choose your level
+          {t("levelStep.title")}
         </h2>
         <p className="text-muted-foreground mt-1">
-          Pick the level that best matches where you are right now.
+          {t("levelStep.description")}
         </p>
       </div>
       <Controller
@@ -74,10 +83,12 @@ const LevelStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
 
                       <div className="flex-1">
                         <h3 className="font-semibold text-md">
-                          {option.title}
+                          {locale === "en" ? option.titleEn : option.titleAr}
                         </h3>
                         <p className="text-muted-foreground text-xs mt-1">
-                          {option.description}
+                          {locale === "en"
+                            ? option.descriptionEn
+                            : option.descriptionAr}
                         </p>
                       </div>
                     </div>

@@ -6,20 +6,25 @@ import { Briefcase, Check, Globe, Monitor, X, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import { useLocale, useTranslations } from "next-intl";
 
 const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
   const { control } = form;
+  const t = useTranslations("FormEnroll");
+  const locale = useLocale();
 
   const hasExpOptions = [
     {
       value: true,
-      title: "Yes",
+      titleEn: "Yes",
+      titleAr: "نعم",
       icon: Check,
       color: "text-gray-500",
     },
     {
       value: false,
-      title: "No",
+      titleEn: "No",
+      titleAr: "لا",
       icon: X,
       color: "text-gray-500",
     },
@@ -28,25 +33,29 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
   const goalOptions = [
     {
       value: "job",
-      title: "Get a job",
+      titleEn: "Get a job",
+      titleAr: "الحصول على وظيفة",
       icon: Briefcase,
       color: "text-gray-500",
     },
     {
       value: "freelancing",
-      title: "Freelancing",
+      titleEn: "Freelancing",
+      titleAr: "العمل الحر",
       icon: Globe,
       color: "text-gray-500",
     },
     {
       value: "skills",
-      title: "Improve skills",
+      titleEn: "Improve skills",
+      titleAr: "تحسين المهارات",
       icon: Zap,
       color: "text-gray-500",
     },
     {
       value: "projects",
-      title: "Build Projects",
+      titleEn: "Build Projects",
+      titleAr: "بناء مشاريع",
       icon: Monitor,
       color: "text-gray-500",
     },
@@ -56,7 +65,7 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
     <div className="space-y-7 mt-5">
       <section>
         <Label className="text-md sm:text-lg font-semibold mb-5">
-          Do you have programming experience?
+          {t("goalStep.hasExperience")}
         </Label>
         <Controller
           control={control}
@@ -73,7 +82,7 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
 
                 return (
                   <Card
-                    key={option.title}
+                    key={locale === "en" ? option.titleEn : option.titleAr}
                     className={cn(
                       "cursor-pointer transition-all duration-200 border rounded-full p-3",
                       isSelected && "border-primary bg-primary/5",
@@ -84,7 +93,7 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
                       <div className="flex items-center gap-2">
                         <Icon className={`w-5 h-5 ${option.color}`} />
                         <h3 className="font-semibold text-md">
-                          {option.title}
+                          {locale === "en" ? option.titleEn : option.titleAr}
                         </h3>
                       </div>
                     </CardContent>
@@ -98,7 +107,7 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
 
       <section>
         <Label className="text-md sm:text-lg font-semibold mb-5">
-          What is your main goal?
+          {t("goalStep.goal")}
         </Label>
         <Controller
           control={control}
@@ -126,7 +135,7 @@ const GoalStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Icon className={`w-5 h-5 ${option.color}`} />
                         <h3 className="font-semibold text-md">
-                          {option.title}
+                          {locale === "en" ? option.titleEn : option.titleAr}
                         </h3>
                       </div>
                     </CardContent>

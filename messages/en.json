@@ -28,5 +28,47 @@
   },
   "Footer": {
     "txt": "© 2026 YouTurkeyTech. Crafted with passion for frontend education. All rights reserved."
+  },
+  "FormEnroll": {
+    "previous": "Previous",
+    "continue": "Continue",
+    "complete": "Complete",
+    "InfoStep": {
+      "title": "Let's get started",
+      "description": "Fill in your basic info to reserve your spot.",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number"
+    },
+    "levelStep": {
+      "title": "Choose your level",
+      "description": "Select the level that best describes your current frontend skills."
+    },
+    "goalStep": {
+      "hasExperience": "Do you have programming experience?",
+      "goal": "What is your main goal?"
+    },
+    "detailStep": {
+      "title": "Almost there",
+      "description": "One last thing and you're in the program.",
+      "heardFrom": "How did you hear about us?",
+      "select": "Select a source...",
+      "other": "Other",
+      "notes": "Notes (optional)",
+      "notesPlaceholder": "Anything else you'd like us to know?"
+    },
+    "successScreen": {
+      "title": "You're in!",
+      "welcome": "Welcome to",
+      "description": "Congratulations on enrolling in the Frontend Engineer Program! We're thrilled to have you on board and can't wait to see you thrive in your frontend journey. Check your email for next steps and get ready to start learning!",
+      "features": {
+        "whatsappGroup": "WhatsApp Group",
+        "whatsappGroupDescription": "We'll send you the group link within 24 hours",
+        "confirmationEmail": "Confirmation Email",
+        "confirmationEmailDescription": "Check your inbox for all enrollment details",
+        "courseStartsSoon": "Course Starts Soon",
+        "courseStartsSoonDescription": "Get ready — your frontend journey begins here!"
+      }
+    }
   }
 }
