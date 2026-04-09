@@ -74,7 +74,7 @@ const SuccessScreen = () => {
           <div>
             <h2
               id="success-title"
-              className="text-5xl font-bold tracking-tight cursor-pointer hover:scale-105 transition-transform"
+              className="text-xl sm:text-5xl font-bold tracking-tight cursor-pointer hover:scale-105 transition-transform"
             >
               {t("successScreen.title")} 🎉
             </h2>
@@ -86,7 +86,7 @@ const SuccessScreen = () => {
         </div>
 
         {/* Description */}
-        <p className="text-muted-foreground max-w-md text-lg">
+        <p className="text-muted-foreground max-w-md text-sm sm:text-lg">
           {t("successScreen.description")}
         </p>
 
