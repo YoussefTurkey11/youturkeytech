@@ -6,9 +6,11 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import AccordionMotionServices from "../accordion/accordion-07";
 import { advancedLevels, beginnerLevels, intermediateLevels } from "@/data/db";
+import { useLocale } from "next-intl";
 
 type Tab = {
-  title: string;
+  titleAr: string;
+  titleEn: string;
   value: string;
   content?: React.ReactNode;
 };
@@ -23,7 +25,8 @@ type TabsProps = {
 
 const tabs = [
   {
-    title: "Beginner",
+    titleEn: "Beginner",
+    titleAr: "المستوى المبتدئ",
     value: "beginner",
     content: (
       <div className="w-full overflow-hidden relative rounded-2xl p-10 text-xl md:text-4xl font-bold text-foreground bg-background border border-border">
@@ -32,7 +35,8 @@ const tabs = [
     ),
   },
   {
-    title: "Intermediate",
+    titleEn: "Intermediate",
+    titleAr: "المستوى المتوسط",
     value: "intermediate",
     content: (
       <div className="w-full overflow-hidden relative rounded-2xl p-10 text-xl md:text-4xl font-bold text-foreground bg-background border border-border">
@@ -41,7 +45,8 @@ const tabs = [
     ),
   },
   {
-    title: "Advanced",
+    titleEn: "Advanced",
+    titleAr: "المستوى المتقدم",
     value: "advanced",
     content: (
       <div className="w-full overflow-hidden relative rounded-2xl p-10 text-xl md:text-4xl font-bold text-foreground bg-background border border-border">
@@ -58,6 +63,7 @@ const Tabs = ({
   tabClassName,
   contentClassName,
 }: TabsProps) => {
+  const locale = useLocale();
   const [activeIdx, setActiveIdx] = useState(0);
   const [hovering, setHovering] = useState(false);
 
@@ -108,7 +114,7 @@ const Tabs = ({
                   isActive ? "text-background" : "text-foreground",
                 )}
               >
-                {tab.title}
+                {locale === "en" ? tab.titleEn : tab.titleAr}
               </span>
             </button>
           );
@@ -152,6 +158,7 @@ const FadeInStack = ({ className, tabs }: FadeInStackProps) => {
 };
 
 export default function Timetable() {
+  const locale = useLocale();
   return (
     <>
       <div
@@ -165,16 +172,19 @@ export default function Timetable() {
             variant={"outline"}
             className="py-1 px-3 text-sm font-normal leading-5 w-fit h-7 capitalize"
           >
-            Timetable
+            {locale === "en" ? "Timetable" : "الجدول الزمني"}
           </Badge>
           {/* Heading */}
           <div className="w-full sm:max-w-md mx-auto text-center">
             <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
-              Every session. Every topic.
+              {locale === "en"
+                ? "Every session. Every topic."
+                : "كل جلسة. كل موضوع."}
             </h2>
             <p className="text-muted-foreground text-base sm:text-lg font-normal mt-4">
-              Expand any level to see the complete breakdown — exactly what
-              you'll learn, lesson by lesson.
+              {locale === "en"
+                ? "Expand any level to see the complete breakdown — exactly what you'll learn, lesson by lesson."
+                : "قم بتوسيع أي مستوى لرؤية التفاصيل الكاملة — ماذا ستتعلم بالضبط، درسًا بعد درس."}
             </p>
           </div>
         </div>

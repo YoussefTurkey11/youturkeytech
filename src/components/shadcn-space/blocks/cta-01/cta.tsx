@@ -2,8 +2,10 @@
 import { useRef, useState } from "react";
 import { motion } from "motion/react";
 import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
+import { useTranslations } from "next-intl";
 
 const CTA = () => {
+  const t = useTranslations("CTA");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const ref = useRef(null);
 
@@ -27,12 +29,9 @@ const CTA = () => {
             >
               <div className="flex flex-col gap-3 items-center text-center">
                 <h2 className="text-3xl md:text-5xl font-medium">
-                  Become a Frontend Engineer from Zero
+                  {t("title")}
                 </h2>
-                <p className="max-w-2xl mx-auto">
-                  Join a hands-on course designed to turn your skills into real
-                  projects and career opportunities.
-                </p>
+                <p className="max-w-2xl mx-auto">{t("description")}</p>
               </div>
               <EnrollmentForm open={isDialogOpen} setOpen={setIsDialogOpen} />
             </motion.div>

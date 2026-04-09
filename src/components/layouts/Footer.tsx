@@ -1,8 +1,12 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
 const Footer = () => {
+  const t = useTranslations("Footer");
   return (
     <footer className="text-center text-muted-foreground text-sm mb-10 px-6">
-      © 2026 YouTurkeyTech. Crafted with passion for frontend education. All
-      rights reserved.
+      {t("txt")}
     </footer>
   );
 };

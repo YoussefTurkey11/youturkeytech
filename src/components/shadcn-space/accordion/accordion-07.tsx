@@ -9,16 +9,21 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useLocale } from "next-intl";
+import { cn } from "@/lib/utils";
 
 export interface AccordionItem {
   id: string;
   number: string;
-  title: string;
-  content: string[];
+  titleAr: string;
+  titleEn: string;
+  content: { ar: string[]; en: string[] };
 }
 
 const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
-  const [openItems, setOpenItems] = useState<string[]>(["discovery"]);
+  const locale = useLocale() as "ar" | "en";
+  const isRTL = locale === "ar";
+  const [openItems, setOpenItems] = useState<string[]>([items[0]?.id]);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
@@ -87,7 +92,7 @@ const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
                         damping: 30,
                       }}
                     >
-                      {item.title}
+                      {locale === "ar" ? item.titleAr : item.titleEn}
                     </motion.span>
 
                     {/* Plus / X icon */}
@@ -109,10 +114,10 @@ const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
                 </AccordionTrigger>
 
                 <AccordionContent className="pl-16 pr-4 pb-6 text-sm text-muted-foreground leading-relaxed">
-                  {item.content.map((line, idx) => (
+                  {item.content[locale].map((line, idx) => (
                     <motion.li
                       key={idx}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3 }}
                       className="py-1 hover:font-bold hover:text-primary transition-colors"
@@ -127,7 +132,11 @@ const AccordionMotionServices = ({ items }: { items: AccordionItem[] }) => {
 
                 {/* Animated active/hover line */}
                 <motion.div
-                  className="absolute bottom-0 left-0 h-px origin-left bg-foreground"
+                  className={cn(
+                    "absolute bottom-0 h-px bg-foreground",
+                    "ltr:left-0 ltr:origin-left",
+                    "rtl:right-0 rtl:origin-right",
+                  )}
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: isActive ? 1 : isHovered ? 0.3 : 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}

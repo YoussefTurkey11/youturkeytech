@@ -1,17 +1,22 @@
+"use client";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { Asterisk, LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import { motion } from "motion/react";
+import { useLocale } from "next-intl";
 
 type Features = {
   icon: LucideIcon;
-  title: string;
+  titleEn: string;
+  titleAr: string;
   color: string;
-  content: string;
+  contentEn: string;
+  contentAr: string;
 }[];
 
 const Feature = ({ featureData }: { featureData: Features }) => {
+  const locale = useLocale();
   return (
     <section id="projects" className="scroll-mt-10">
       <div className="lg:py-20 sm:py-16 py-8 px-6">
@@ -28,14 +33,17 @@ const Feature = ({ featureData }: { featureData: Features }) => {
               className="flex flex-col items-center justify-center gap-4 max-w-lg mx-auto text-center"
             >
               <Badge variant={"outline"} className="px-3 py-1 h-auto text-sm">
-                Portfolio projects
+                {locale === "en" ? "Projects" : "المشاريع"}
               </Badge>
               <h2 className="text-foreground text-3xl sm:text-5xl font-bold capitalize">
-                Real projects. Real portfolio. Real jobs.
+                {locale === "en"
+                  ? "Real projects. Real portfolio. Real jobs."
+                  : "مشاريع حقيقية. ملف شخصي حقيقية. وظائف حقيقية."}
               </h2>
               <p className="text-muted-foreground text-base sm:text-lg font-normal mt-4">
-                Every level ends with a milestone project you deploy, own, and
-                show to employers. Not clones — yours.
+                {locale === "en"
+                  ? "Build three real-world projects, deploy them to Vercel, and showcase them in your portfolio. No templates, no copy-pasting — just you and your code."
+                  : "قم ببناء ثلاثة مشاريع حقيقية، نشرها على Vercel، وعرضها في ملفك الشخصي. لا قوالب، لا نسخ ولصق — فقط أنت وكودك."}
               </p>
             </motion.div>
             <motion.div
@@ -80,11 +88,13 @@ const Feature = ({ featureData }: { featureData: Features }) => {
                               strokeWidth={1.2}
                             />
                             <h6 className="text-xl font-semibold">
-                              {value.title}
+                              {locale === "en" ? value.titleEn : value.titleAr}
                             </h6>
                           </div>
                           <p className="text-base font-normal text-muted-foreground">
-                            {value.content}
+                            {locale === "en"
+                              ? value.contentEn
+                              : value.contentAr}
                           </p>
                         </div>
                       </CardContent>

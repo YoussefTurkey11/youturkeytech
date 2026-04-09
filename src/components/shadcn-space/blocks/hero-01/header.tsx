@@ -37,7 +37,7 @@ type HeaderProps = {
 };
 
 const Header = ({ navigationData, className }: HeaderProps) => {
-  const t = useTranslations("Landpage");
+  const t = useTranslations("Header");
   const locale = useLocale();
 
   const [sticky, setSticky] = useState(false);
@@ -126,7 +126,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
               <SheetTrigger id="mobile-menu-trigger">
                 <span className="rounded-full border border-border p-2 block">
                   <Menu width={20} height={20} />
-                  <span className="sr-only">{t("Header.menu")}</span>
+                  <span className="sr-only">{t("menu")}</span>
                 </span>
               </SheetTrigger>
 
@@ -148,9 +148,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
 
                 <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
                   <div className="flex flex-col gap-8">
-                    <SheetTitle className="sr-only">
-                      {t("Header.menu")}
-                    </SheetTitle>
+                    <SheetTitle className="sr-only">{t("menu")}</SheetTitle>
                     <NavigationMenu
                       orientation="vertical"
                       className="items-start flex-none"

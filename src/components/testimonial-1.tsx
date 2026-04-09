@@ -42,63 +42,20 @@ import {
 } from "@/components/ui/carousel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "next-intl";
+import { testimonials } from "@/data/db";
 
-interface Testimonial {
+export interface Testimonial {
   id: number;
-  name: string;
-  role: string;
+  nameAr: string;
+  nameEn: string;
+  roleAr: string;
+  roleEn: string;
   image: string;
-  review: string;
+  reviewAr: string;
+  reviewEn: string;
   rating: number;
 }
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Alison Dawn",
-    role: "Developer",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-1",
-    review:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: "Daniel Peter",
-    role: "Product Designer",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=male-2",
-    review:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
-    rating: 5.0,
-  },
-  {
-    id: 3,
-    name: "Sarah Johnson",
-    role: "Restaurant Owner",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-3",
-    review:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
-    rating: 4.8,
-  },
-  {
-    id: 4,
-    name: "Michael Chen",
-    role: "Food Critic",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=male-4",
-    review:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
-    rating: 4.9,
-  },
-  {
-    id: 5,
-    name: "Emma Wilson",
-    role: "Chef",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-2",
-    review:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
-    rating: 4.7,
-  },
-];
 
 const RatingStars = ({ rating }: { rating: number }) => (
   <div className="flex items-center gap-1">
@@ -118,6 +75,7 @@ const RatingStars = ({ rating }: { rating: number }) => (
 export function TestimonialPage({ className }: { className?: string }) {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
   const [current, setCurrent] = React.useState(0);
+  const locale = useLocale();
 
   React.useEffect(() => {
     if (!api) return;
@@ -137,17 +95,18 @@ export function TestimonialPage({ className }: { className?: string }) {
       <div className="container mx-auto max-w-7xl px-6 lg:px-16 flex flex-col items-center">
         <header className="mb-16 text-center sm:w-150">
           <h2 className="text-3xl font-bold text-balance md:text-4xl">
-            Real Results. Real Students.
+            {locale === "ar" ? "ماذا يقول طلابنا؟" : "What Our Students Say"}
           </h2>
           <p className="text-muted-foreground mt-4 text-md">
-            See how students at YouTurkeyTech transformed their skills, built
-            real projects, and took real steps toward becoming frontend
-            engineers.
+            {locale === "ar"
+              ? "اكتشف تجارب طلابنا الذين استفادوا من مسارنا التعليمي."
+              : "Discover the experiences of our students who have benefited from our learning path."}
           </p>
         </header>
 
         <Carousel
           className="w-full"
+          dir="ltr"
           setApi={(api) => {
             if (api) {
               setApi(api);
@@ -172,26 +131,38 @@ export function TestimonialPage({ className }: { className?: string }) {
                       <Avatar className="bg-muted size-12">
                         <AvatarImage
                           src={testimonial.image}
-                          alt={testimonial.name}
+                          alt={
+                            locale === "ar"
+                              ? testimonial.nameAr
+                              : testimonial.nameEn
+                          }
                           className="size-12"
                         />
                         <AvatarFallback className="bg-card">
-                          {testimonial.name[0]}
+                          {locale === "ar"
+                            ? testimonial.nameAr[0]
+                            : testimonial.nameEn[0]}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <CardTitle className="text-foreground font-semibold">
-                          {testimonial.name}
+                          {locale === "ar"
+                            ? testimonial.nameAr
+                            : testimonial.nameEn}
                         </CardTitle>
                         <p className="text-muted-foreground text-sm">
-                          {testimonial.role}
+                          {locale === "ar"
+                            ? testimonial.roleAr
+                            : testimonial.roleEn}
                         </p>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      {testimonial.review}
+                      {locale === "ar"
+                        ? testimonial.reviewAr
+                        : testimonial.reviewEn}
                     </p>
                   </CardContent>
                   <CardFooter>

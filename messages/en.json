@@ -1,6 +1,7 @@
 {
   "Header": {
-    "menu": "Menu"
+    "menu": "Menu",
+    "ad": "Get 30% OFF and start your Frontend journey today!"
   },
   "Landpage": {
     "mainHeadText": {
@@ -20,5 +21,12 @@
   "CTAButton": {
     "enrollNow": "Enroll Now",
     "viewDemo": "View Demo"
+  },
+  "CTA": {
+    "title": "Become a Frontend Engineer from Zero",
+    "description": "A complete hands-on program by YouTurkeyTech designed to take you from beginner to professional with real-world projects, modern tools, and industry best practices."
+  },
+  "Footer": {
+    "txt": "© 2026 YouTurkeyTech. Crafted with passion for frontend education. All rights reserved."
   }
 }
