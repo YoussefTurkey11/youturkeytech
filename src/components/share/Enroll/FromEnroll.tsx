@@ -63,7 +63,7 @@ const FormEnroll = () => {
   };
 
   if (isSubmitted) {
-    return <SuccessScreen formData={form.getValues()} />;
+    return <SuccessScreen />;
   }
 
   return (
