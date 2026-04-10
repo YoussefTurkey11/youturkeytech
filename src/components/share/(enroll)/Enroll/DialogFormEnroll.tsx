@@ -3,7 +3,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "../../ui/dialog";
+} from "../../../ui/dialog";
 import Enroll from "../Enroll";
 import FormEnroll from "./FromEnroll";
 

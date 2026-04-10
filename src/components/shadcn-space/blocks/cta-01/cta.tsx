@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import { motion } from "motion/react";
-import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
+import EnrollmentForm from "@/components/share/(enroll)/Enroll/DialogFormEnroll";
 import { useTranslations } from "next-intl";
 
 const CTA = () => {

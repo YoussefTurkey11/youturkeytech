@@ -1,7 +1,7 @@
 import { UseFormReturn } from "react-hook-form";
 import InfoStep from "./steps/InfoStep";
 import LevelStep from "./steps/levelStep";
-import { EnrollFormData } from "@/validation/Enroll.schema";
+import { EnrollFormData } from "@/validation/enroll/Enroll.schema";
 import GoalStep from "./steps/goalStep";
 import DetailStep from "./steps/detailStep";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Controller, UseFormReturn } from "react-hook-form";
-import { EnrollFormData, Level } from "@/validation/Enroll.schema"; // أو من levelStep.schema
+import { EnrollFormData, Level } from "@/validation/enroll/Enroll.schema"; // أو من levelStep.schema
 import { Card, CardContent } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Star, Code2, Sparkles } from "lucide-react";

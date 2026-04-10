@@ -70,5 +70,89 @@
         "courseStartsSoonDescription": "استعد - رحلتك في تطوير الواجهات الأمامية تبدأ هنا!"
       }
     }
+  },
+  "Login": {
+    "haveAccount": "ليس لديك حساب؟",
+    "title": "تسجيل الدخول",
+    "back": "عودة",
+    "form": {
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "password": "كلمة المرور",
+      "success": "تم تسجيل الدخول بنجاح! جاري إعادة التوجيه...",
+      "loginFailed": "فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد والمحاولة مرة أخرى.",
+      "forgotPassword": "نسيت كلمة المرور؟"
+    },
+    "validation": {
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "passwordInvalid": "كلمة المرور يجب أن تكون على الأقل 6 أحرف",
+      "passwordConfirmationInvalid": "كلمات المرور غير متطابقة"
+    }
+  },
+  "Register": {
+    "haveAccount": "هل لديك حساب؟",
+    "title": "تسجيل",
+    "form": {
+      "name": "الاسم",
+      "namePlaceholder": "أدخل اسمك",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "أدخل رقم هاتفك",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "password": "كلمة المرور",
+      "passwordConfirmation": "تأكيد كلمة المرور"
+    },
+    "validation": {
+      "nameRequired": "الاسم مطلوب",
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "phoneInvalid": "رقم الهاتف يجب أن يكون بين 10 و 15 حرفًا",
+      "passwordInvalid": "كلمة المرور يجب أن تكون على الأقل 6 أحرف",
+      "passwordConfirmationInvalid": "كلمات المرور غير متطابقة",
+      "success": "تم التسجيل بنجاح! جاري إعادة التوجيه...",
+      "registerFailed": "فشل التسجيل. يرجى التحقق من التفاصيل والمحاولة مرة أخرى."
+    }
+  },
+  "forgotPassword": {
+    "sendCode": "إرسال الرمز",
+    "form": {
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني"
+    },
+    "validation": {
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "emailSent": "يرجى التحقق من بريدك الإلكتروني!",
+      "emailFailed": "فشل إرسال رمز إعادة التعيين. يرجى المحاولة مرة أخرى.",
+      "emailSuccess": "تم إرسال رمز إعادة التعيين بنجاح! يرجى التحقق من بريدك الإلكتروني."
+    }
+  },
+  "resetPassword": {
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "missingEmail": "بريد إلكتروني غير صالح أو مفقود",
+    "requestAgain": "طلب مرة أخرى",
+    "submit": "إعادة تعيين كلمة المرور",
+    "emailVerified": "تم التحقق من البريد الإلكتروني",
+    "form": {
+      "email": "البريد الإلكتروني",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "newPassword": "كلمة المرور الجديدة",
+      "newPasswordPlaceholder": "أدخل كلمة المرور الجديدة",
+      "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+      "confirmNewPasswordPlaceholder": "تأكيد كلمة المرور الجديدة"
+    },
+    "validation": {
+      "emailInvalid": "البريد الإلكتروني غير صالح",
+      "passwordInvalid": "كلمة المرور يجب أن تكون على الأقل 6 أحرف",
+      "passwordConfirmationInvalid": "كلمات المرور غير متطابقة",
+      "resetFailed": "فشل إعادة تعيين كلمة المرور. يرجى التحقق من تفاصيلك والمحاولة مرة أخرى.",
+      "resetSuccess": "تم إعادة تعيين كلمة المرور بنجاح! يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة."
+    }
+  },
+  "verifyOTP": {
+    "sendCode": "إرسال الرمز",
+    "validation": {
+      "otpLength": "يجب أن يكون رمز OTP مكونًا من 6 أحرف بالضبط",
+      "verificationFailed": "فشل التحقق من رمز OTP. يرجى التحقق من الرمز والمحاولة مرة أخرى.",
+      "verificationSuccess": "تم التحقق من رمز OTP بنجاح! يمكنك الآن إعادة تعيين كلمة المرور."
+    }
   }
 }

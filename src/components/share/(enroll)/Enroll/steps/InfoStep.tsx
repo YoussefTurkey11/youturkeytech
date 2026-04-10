@@ -2,7 +2,7 @@
 
 import InputField from "../InputField";
 import { UseFormReturn } from "react-hook-form";
-import { EnrollFormData } from "@/validation/Enroll.schema";
+import { EnrollFormData } from "@/validation/enroll/Enroll.schema";
 import { useTranslations } from "next-intl";
 
 const InfoStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {

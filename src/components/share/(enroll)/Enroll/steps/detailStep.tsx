@@ -1,6 +1,6 @@
 "use client";
 import { UseFormReturn } from "react-hook-form";
-import { EnrollFormData } from "@/validation/Enroll.schema";
+import { EnrollFormData } from "@/validation/enroll/Enroll.schema";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -53,13 +53,10 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
             <SelectContent className={"rounded-xl"}>
               <SelectGroup>
                 <SelectLabel>{t("detailStep.select")}</SelectLabel>
-                <SelectItem value="youtube">YouTube</SelectItem>
                 <SelectItem value="instagram">Instagram</SelectItem>
                 <SelectItem value="facebook">Facebook</SelectItem>
                 <SelectItem value="linkedin">LinkedIn</SelectItem>
-                <SelectItem value="tiktok">TikTok</SelectItem>
-                <SelectItem value="referral">Friend / Referral</SelectItem>
-                <SelectItem value="google">Google Search</SelectItem>
+                <SelectItem value="friend">Friend / Referral</SelectItem>
                 <SelectItem value="other">{t("detailStep.other")}</SelectItem>
               </SelectGroup>
             </SelectContent>

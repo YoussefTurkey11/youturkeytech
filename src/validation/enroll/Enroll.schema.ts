@@ -8,8 +8,9 @@ export enum Level {
 
 export enum Status {
   Pending = "pending",
-  Contacted = "contacted",
-  Enrolled = "enrolled",
+  Reviewed = "reviewed",
+  Accepted = "accepted",
+  Rejected = "rejected",
 }
 
 export const enrollSchema = z.object({

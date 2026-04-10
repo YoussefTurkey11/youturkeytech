@@ -1,6 +1,6 @@
 "use client";
 import { Controller, UseFormReturn } from "react-hook-form";
-import { EnrollFormData } from "@/validation/Enroll.schema";
+import { EnrollFormData } from "@/validation/enroll/Enroll.schema";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { Briefcase, Check, Globe, Monitor, X, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";

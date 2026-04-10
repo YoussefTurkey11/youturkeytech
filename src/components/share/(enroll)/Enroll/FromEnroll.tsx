@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../../ui/button";
-import AnimatedStepper from "../../ui/smoothui/animated-stepper";
+import { Button } from "../../../ui/button";
+import AnimatedStepper from "../../../ui/smoothui/animated-stepper";
 import { stepsEnroll } from "./stepsEnroll";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +10,7 @@ import {
   enrollSchema,
   Level,
   Status,
-} from "@/validation/Enroll.schema";
+} from "@/validation/enroll/Enroll.schema";
 import SuccessScreen from "./steps/SuccessScreen";
 import { useLocale } from "next-intl";
 

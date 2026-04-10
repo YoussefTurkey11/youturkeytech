@@ -13,6 +13,7 @@ import { routing } from "@/i18n/routing";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import ReduxProvider from "@/redux/provider";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -51,16 +52,18 @@ export default async function RootLayout({
       className={cn("h-full", cairo.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <HeadAdsServer />
-            <Header navigationData={navigationData} />
-            {children}
-            <Toaster />
-            <Skiper89 />
-            <Footer />
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <ReduxProvider>
+          <NextIntlClientProvider messages={messages}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <HeadAdsServer />
+              <Header navigationData={navigationData} />
+              {children}
+              <Toaster />
+              <Skiper89 />
+              <Footer />
+            </ThemeProvider>
+          </NextIntlClientProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

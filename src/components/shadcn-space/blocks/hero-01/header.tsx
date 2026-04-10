@@ -20,9 +20,11 @@ import { Menu, X } from "lucide-react";
 import Logo from "@/assets/logo/logo";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/share/ThemeToggle";
-import EnrollmentForm from "@/components/share/Enroll/DialogFormEnroll";
+import EnrollmentForm from "@/components/share/(enroll)/Enroll/DialogFormEnroll";
 import LanguageSwitcher from "@/components/share/LanguageSwitcher";
 import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export type NavigationSection = {
   titleAr: string;
@@ -39,6 +41,7 @@ type HeaderProps = {
 const Header = ({ navigationData, className }: HeaderProps) => {
   const t = useTranslations("Header");
   const locale = useLocale();
+  const pathname = usePathname();
 
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +66,15 @@ const Header = ({ navigationData, className }: HeaderProps) => {
     };
   }, [handleScroll, handleResize]);
 
+  const adminPath =
+    pathname.startsWith(`/${locale}/admin`) ||
+    pathname.startsWith(`/${locale}/dashboard`) ||
+    pathname.startsWith(`/${locale}/login`) ||
+    pathname.startsWith(`/${locale}/register`) ||
+    pathname.startsWith(`/${locale}/forgotPassword`) ||
+    pathname.startsWith(`/${locale}/resetPassword`) ||
+    pathname.startsWith(`/${locale}/verifyOTP`);
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -32 }}
@@ -84,34 +96,36 @@ const Header = ({ navigationData, className }: HeaderProps) => {
       >
         {/* Logo */}
         <div>
-          <a href="#">
+          <Link href={`/${locale}`}>
             <Logo className="gap-3" />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <div>
-          <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
-            <NavigationMenuList className="flex gap-0">
-              {navigationData.map((navItem) => (
-                <NavigationMenuItem key={navItem.titleEn}>
-                  <NavigationMenuLink
-                    href={navItem.href}
-                    onClick={() => setActive(navItem.href)}
-                    className={cn(
-                      "px-2 lg:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal",
-                      active === navItem.href
-                        ? "bg-background text-foreground"
-                        : "",
-                    )}
-                  >
-                    {locale === "en" ? navItem.titleEn : navItem.titleAr}
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
+        {!adminPath && (
+          <div>
+            <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
+              <NavigationMenuList className="flex gap-0">
+                {navigationData.map((navItem) => (
+                  <NavigationMenuItem key={navItem.titleEn}>
+                    <NavigationMenuLink
+                      href={navItem.href}
+                      onClick={() => setActive(navItem.href)}
+                      className={cn(
+                        "px-2 lg:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal",
+                        active === navItem.href
+                          ? "bg-background text-foreground"
+                          : "",
+                      )}
+                    >
+                      {locale === "en" ? navItem.titleEn : navItem.titleAr}
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        )}
 
         {/* Desktop CTA */}
         <div className="flex gap-4">
@@ -136,9 +150,9 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                 className="w-full sm:w-96 p-0 border-l-0"
               >
                 <div className="flex items-center justify-between p-6">
-                  <a href="#">
+                  <Link href={`/${locale}`}>
                     <Logo className="gap-2" />
-                  </a>
+                  </Link>
                   <SheetClose id="mobile-menu-close">
                     <span className="rounded-full border border-border p-2.5 block">
                       <X width={16} height={16} />
@@ -149,6 +163,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                 <div className="flex flex-col gap-12 px-6 pb-6 overflow-y-auto">
                   <div className="flex flex-col gap-8">
                     <SheetTitle className="sr-only">{t("menu")}</SheetTitle>
+
                     <NavigationMenu
                       orientation="vertical"
                       className="items-start flex-none"

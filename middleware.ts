@@ -8,7 +8,7 @@ const intlMiddleware = createMiddleware(routing);
 export function middleware(req: NextRequest) {
   const response = intlMiddleware(req);
 
-  const token = req.cookies.get("auth_token")?.value;
+  const token = req.cookies.get("access_token")?.value;
 
   const pathname = req.nextUrl.pathname.replace(/^\/(en|ar)/, "");
 

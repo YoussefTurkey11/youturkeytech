@@ -2,7 +2,7 @@
 
 import { Aref_Ruqaa, Instrument_Serif } from "next/font/google";
 import { motion } from "motion/react";
-import DialogPreview from "@/components/share/Enroll/DialogPreview";
+import DialogPreview from "@/components/share/(enroll)/Enroll/DialogPreview";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 

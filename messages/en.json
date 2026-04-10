@@ -70,5 +70,86 @@
         "courseStartsSoonDescription": "Get ready — your frontend journey begins here!"
       }
     }
+  },
+  "Login": {
+    "haveAccount": "Don't have an account?",
+    "title": "Sign Up",
+    "back": "Back",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "Enter your Email",
+      "password": "Password",
+      "success": "Login successful! Redirecting...",
+      "loginFailed": "Login failed. Please check your credentials and try again.",
+      "forgotPassword": "Forgot Password?"
+    },
+    "validation": {
+      "emailInvalid": "Email invalid",
+      "passwordInvalid": "Password must be at least 6 characters",
+      "passwordConfirmationInvalid": "Passwords don't match"
+    }
+  },
+  "Register": {
+    "haveAccount": "Already have an account?",
+    "title": "Register",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your Phone Number",
+      "emailPlaceholder": "Enter your Email",
+      "password": "Password",
+      "passwordConfirmation": "Confirm Password"
+    },
+    "validation": {
+      "nameRequired": "Name is required",
+      "emailInvalid": "Email invalid",
+      "phoneInvalid": "Phone number must be between 10 and 15 characters",
+      "passwordInvalid": "Password must be at least 6 characters",
+      "passwordConfirmationInvalid": "Passwords don't match",
+      "success": "Registration successful! Redirecting...",
+      "registerFailed": "Registration failed. Please check your details and try again."
+    }
+  },
+  "forgotPassword": {
+    "sendCode": "Send Code",
+    "form": { "email": "Email", "emailPlaceholder": "Enter your Email" },
+    "validation": {
+      "emailInvalid": "Email invalid",
+      "emailSent": "Please check your email!",
+      "emailFailed": "Failed to send reset code. Please try again.",
+      "emailSuccess": "Reset code sent successfully! Please check your email."
+    }
+  },
+  "resetPassword": {
+    "resetPassword": "Reset Password",
+    "missingEmail": "Invalid or missing email",
+    "requestAgain": "Request again",
+    "submit": "Reset Password",
+    "emailVerified": "Email Verified",
+    "form": {
+      "email": "Email",
+      "emailPlaceholder": "Enter your Email",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter your New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "confirmNewPasswordPlaceholder": "Confirm your New Password"
+    },
+    "validation": {
+      "emailInvalid": "Email invalid",
+      "passwordInvalid": "Password must be at least 6 characters",
+      "passwordConfirmationInvalid": "Passwords don't match",
+      "resetFailed": "Failed to reset password. Please check your details and try again.",
+      "resetSuccess": "Password reset successful! You can now log in with your new password."
+    }
+  },
+  "verifyOTP": {
+    "sendCode": "Send Code",
+    "validation": {
+      "otpLength": "OTP must be exactly 6 characters",
+      "verificationFailed": "Failed to verify OTP. Please check the code and try again.",
+      "verificationSuccess": "OTP verified successfully! You can now reset your password."
+    }
   }
 }
