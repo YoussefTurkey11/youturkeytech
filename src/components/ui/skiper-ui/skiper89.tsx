@@ -10,14 +10,12 @@ import {
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useAdminPath } from "@/constants/adminPath";
 
 const Skiper89 = () => {
   const { scrollYProgress } = useScroll();
   const [progressPercent, setProgressPercent] = useState(0);
-  const pathname = usePathname();
-  const locale = useLocale();
+  const isAdminPath = useAdminPath();
 
   const clampedProgress = useTransform(scrollYProgress, (value) =>
     Math.min(Math.max(value, 0), 1),
@@ -41,15 +39,7 @@ const Skiper89 = () => {
     });
   };
 
-  if (
-    pathname.startsWith(`/${locale}/admin`) ||
-    pathname.startsWith(`/${locale}/dashboard`) ||
-    pathname.startsWith(`/${locale}/login`) ||
-    pathname.startsWith(`/${locale}/register`) ||
-    pathname.startsWith(`/${locale}/forgotPassword`) ||
-    pathname.startsWith(`/${locale}/resetPassword`) ||
-    pathname.startsWith(`/${locale}/verifyOTP`)
-  ) {
+  if (isAdminPath) {
     return null;
   }
 

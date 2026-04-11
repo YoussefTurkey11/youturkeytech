@@ -1,26 +1,17 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { useAdminPath } from "@/constants/adminPath";
 import { X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 const HeadAds = () => {
   const [isOpen, setIsOpen] = useState(true);
   const t = useTranslations("Header");
-  const pathname = usePathname();
-  const locale = useLocale();
+  const isAdminPath = useAdminPath();
 
-  if (
-    pathname.startsWith(`/${locale}/admin`) ||
-    pathname.startsWith(`/${locale}/dashboard`) ||
-    pathname.startsWith(`/${locale}/login`) ||
-    pathname.startsWith(`/${locale}/register`) ||
-    pathname.startsWith(`/${locale}/forgotPassword`) ||
-    pathname.startsWith(`/${locale}/resetPassword`) ||
-    pathname.startsWith(`/${locale}/verifyOTP`)
-  ) {
+  if (isAdminPath) {
     return null;
   }
 

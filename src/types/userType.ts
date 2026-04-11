@@ -1,3 +1,12 @@
+import { Pagination } from "./paginationType";
+
+export type userApiResponse = {
+  data: User[];
+  message: string;
+  paginationResult: Pagination;
+  results: number;
+};
+
 export type User = {
   id: string;
   name: string;
@@ -17,7 +26,7 @@ export type UpdateUserPayload = {
   password?: string;
   passwordConfirmation?: string;
   position?: string;
-  jobId: number;
+  jobId?: number;
 };
 
 export type UpdateMyPasswordPayload = {
@@ -39,4 +48,8 @@ export type createUserPayload = {
 export type updateUserRolePayload = {
   id: string;
   role: "admin" | "employee";
+};
+
+export type getMeApiResponse = {
+  data: User;
 };

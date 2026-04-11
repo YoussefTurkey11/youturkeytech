@@ -7,19 +7,19 @@ const intlMiddleware = createMiddleware(routing);
 
 export function middleware(req: NextRequest) {
   const response = intlMiddleware(req);
+  const locale = req.nextUrl.pathname.split("/")[1];
 
   const token = req.cookies.get("access_token")?.value;
 
   const pathname = req.nextUrl.pathname.replace(/^\/(en|ar)/, "");
 
-  const protectedRoutes = ["/dashboard"];
+  const protectedRoutes = [`/${locale}/admin`];
 
   const isProtected = protectedRoutes.some((route) =>
     pathname.startsWith(route),
   );
 
   if (isProtected && !token) {
-    const locale = req.nextUrl.pathname.split("/")[1];
     const loginUrl = new URL(`/${locale}/login`, req.url);
     return NextResponse.redirect(loginUrl);
   }
@@ -28,5 +28,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/(en|ar)/:path*"],
+  matcher: ["/(en|ar)/admin", "/(en|ar)/:path*"],
 };

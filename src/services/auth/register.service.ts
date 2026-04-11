@@ -27,7 +27,7 @@ export const useRegisterService = () => {
 
       setAccessToken(res.accessToken as string);
       setRefreshToken(res.refreshToken as string);
-      dispatch(setUser(res.data));
+      dispatch(setUser(res));
       toast.success(t("validation.success"));
       router.push(`/${locale}/login`);
       return res;

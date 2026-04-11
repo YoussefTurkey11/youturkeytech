@@ -3,7 +3,7 @@ import Landpage from "./(landpage)/landpage/page";
 import Roadmap from "./(landpage)/pricing-01/page";
 import Projects from "@/components/shadcn-space/blocks/feature-02";
 import CTA from "@/components/shadcn-space/blocks/cta-01/cta";
-import TestimonialPage from "@/components/testimonial-1";
+import TestimonialPage from "@/components/ui/testimonial-1";
 
 export default function Home() {
   return (

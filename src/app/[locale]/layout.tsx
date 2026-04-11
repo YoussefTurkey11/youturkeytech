@@ -4,7 +4,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/shadcn-space/blocks/hero-01/header";
 import { navigationData } from "@/data/db";
-import Footer from "@/components/layouts/Footer";
 import { Skiper89 } from "@/components/ui/skiper-ui/skiper89";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import HeadAdsServer from "@/components/layouts/HeadAds/HeadAdsServer";
@@ -14,6 +13,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import ReduxProvider from "@/redux/provider";
+import FootServer from "@/components/layouts/Footer/FootServer";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -60,7 +60,7 @@ export default async function RootLayout({
               {children}
               <Toaster />
               <Skiper89 />
-              <Footer />
+              <FootServer />
             </ThemeProvider>
           </NextIntlClientProvider>
         </ReduxProvider>

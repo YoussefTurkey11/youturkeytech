@@ -2,7 +2,7 @@ import { AccordionItem } from "@/components/shadcn-space/accordion/accordion-07"
 import { BrandList } from "@/components/shadcn-space/blocks/hero-01/brand-slider";
 import { NavigationSection } from "@/components/shadcn-space/blocks/hero-01/header";
 import { AvatarList } from "@/components/shadcn-space/blocks/hero-01/hero";
-import { Testimonial } from "@/components/testimonial-1";
+import { Testimonial } from "@/components/ui/testimonial-1";
 
 export const navigationData: NavigationSection[] = [
   {

@@ -1,4 +1,5 @@
 import {
+  courseApiResponse,
   coursePayload,
   courseStatus,
   updateCourseStatusPayload,
@@ -8,7 +9,7 @@ import { api } from "../baseApi";
 export const courseApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get All Courses Application
-    getAllCoursesApplication: builder.query({
+    getAllCoursesApplication: builder.query<courseApiResponse, void>({
       query: () => `/api/v1/course-applications`,
       providesTags: [{ type: "Courses", id: "LIST" }],
     }),

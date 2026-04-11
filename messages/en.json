@@ -151,5 +151,54 @@
       "verificationFailed": "Failed to verify OTP. Please check the code and try again.",
       "verificationSuccess": "OTP verified successfully! You can now reset your password."
     }
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "description": "Sorry, the page you're looking for doesn't exist.",
+    "goBack": "Go Back Home"
+  },
+  "errorAlert": {
+    "title": "Error Occurred",
+    "description": "Oops! Something went wrong. Please try again later."
+  },
+  "logout": {
+    "success": "Logout successful!",
+    "failed": "Logout failed. Please try again."
+  },
+  "User": {
+    "account": "Account",
+    "logout": "Logout",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "position": "Position",
+      "positionPlaceholder": "Enter your position",
+      "update": "Updating...",
+      "updateProfile": "Update Profile"
+    },
+    "table": {
+      "title": "Users list",
+      "desc": "See information about all Users",
+      "viewAll": "View all",
+      "noUsersFound": "No Users found"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    },
+    "validation": {
+      "name": "Name is required",
+      "email": "Email invalid",
+      "phone": "Phone number must be between 10 and 15 characters",
+      "updateSuccess": "User updated successfully",
+      "updateFailed": "Failed to update user. Please try again.",
+      "logoutSuccessfully": "Logout Successfully"
+    }
   }
 }

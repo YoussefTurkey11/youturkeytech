@@ -1,4 +1,5 @@
 import { Level, Status } from "@/validation/enroll/Enroll.schema";
+import { Pagination } from "./paginationType";
 
 export enum Sources {
   YouTube = "Instagram",
@@ -37,4 +38,11 @@ export type courseStatus = {
 export type updateCourseStatusPayload = {
   id: string;
   status: Status;
+};
+
+export type courseApiResponse = {
+  data: courseStatus[];
+  message: string;
+  paginationResult: Pagination;
+  results: number;
 };

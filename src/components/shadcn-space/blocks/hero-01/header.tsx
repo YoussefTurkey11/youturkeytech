@@ -24,7 +24,7 @@ import EnrollmentForm from "@/components/share/(enroll)/Enroll/DialogFormEnroll"
 import LanguageSwitcher from "@/components/share/LanguageSwitcher";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useAdminPath } from "@/constants/adminPath";
 
 export type NavigationSection = {
   titleAr: string;
@@ -41,7 +41,7 @@ type HeaderProps = {
 const Header = ({ navigationData, className }: HeaderProps) => {
   const t = useTranslations("Header");
   const locale = useLocale();
-  const pathname = usePathname();
+  const isAdminPath = useAdminPath();
 
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -66,14 +66,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
     };
   }, [handleScroll, handleResize]);
 
-  const adminPath =
-    pathname.startsWith(`/${locale}/admin`) ||
-    pathname.startsWith(`/${locale}/dashboard`) ||
-    pathname.startsWith(`/${locale}/login`) ||
-    pathname.startsWith(`/${locale}/register`) ||
-    pathname.startsWith(`/${locale}/forgotPassword`) ||
-    pathname.startsWith(`/${locale}/resetPassword`) ||
-    pathname.startsWith(`/${locale}/verifyOTP`);
+  if (isAdminPath) return;
 
   return (
     <motion.header
@@ -102,7 +95,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
         </div>
 
         {/* Desktop Navigation */}
-        {!adminPath && (
+        {!isAdminPath && (
           <div>
             <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
               <NavigationMenuList className="flex gap-0">

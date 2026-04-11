@@ -21,7 +21,7 @@ export const useLoginService = () => {
 
       setAccessToken(res.accessToken as string);
       setRefreshToken(res.refreshToken as string);
-      dispatch(setUser(res?.data));
+      dispatch(setUser(res));
       toast.success(t("form.success"));
       return res;
     } catch (error: any) {

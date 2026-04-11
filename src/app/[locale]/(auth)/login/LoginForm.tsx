@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLoginService } from "@/services/auth/login.service";
 import { LoginFormSchema, loginSchema } from "@/validation/auth/login.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -12,6 +12,7 @@ const LoginForm = () => {
   const { loginUser } = useLoginService();
   const router = useRouter();
   const t = useTranslations("Login");
+  const locale = useLocale();
 
   const {
     register,
@@ -25,7 +26,7 @@ const LoginForm = () => {
   const onSubmit = async (data: LoginFormSchema) => {
     try {
       await loginUser(data);
-      return router.push("/admin");
+      return router.push(`/${locale}/admin`);
     } catch (error) {
       console.error(error);
     }

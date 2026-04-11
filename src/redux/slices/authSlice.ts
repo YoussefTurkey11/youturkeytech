@@ -1,8 +1,8 @@
-import { User } from "@/types/userType";
+import { getMeApiResponse, User } from "@/types/userType";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
-  user: User | null;
+  user: getMeApiResponse | null;
   token: string | null;
   authInitialized: boolean;
 }
@@ -20,7 +20,7 @@ const authSlice = createSlice({
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
     },
-    setUser: (state, action: PayloadAction<User | null>) => {
+    setUser: (state, action: PayloadAction<getMeApiResponse | null>) => {
       state.user = action.payload;
     },
     setAuthInitialized: (state, action: PayloadAction<boolean>) => {

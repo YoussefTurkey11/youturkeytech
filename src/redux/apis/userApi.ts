@@ -2,16 +2,18 @@ import { ApiResponse } from "@/types/authType";
 import { api } from "../baseApi";
 import {
   createUserPayload,
+  getMeApiResponse,
   UpdateMyPasswordPayload,
   UpdateUserPayload,
   updateUserRolePayload,
   User,
+  userApiResponse,
 } from "@/types/userType";
 
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get All Users
-    getAllUsers: builder.query<User[], void>({
+    getAllUsers: builder.query<userApiResponse, void>({
       query: () => `/api/v1/adminDashboard`,
       providesTags: [{ type: "Users", id: "LIST" }],
     }),
@@ -23,7 +25,7 @@ export const userApi = api.injectEndpoints({
     }),
 
     // Get My Data
-    getMyData: builder.query<User, void>({
+    getMyData: builder.query<getMeApiResponse, void>({
       query: () => `/api/v1/userDashboard/getMyData`,
       providesTags: [{ type: "Users", id: "LIST" }],
     }),
