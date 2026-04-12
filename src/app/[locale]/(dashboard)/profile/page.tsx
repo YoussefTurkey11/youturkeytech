@@ -57,11 +57,11 @@ const Profile = () => {
         {/* 🖼 Avatar */}
         <div className="flex justify-center">
           <Image
-            src={"/images/me.png"}
+            src={"/images/admin.png"}
             width={100}
             height={100}
             alt="profile"
-            className="rounded-full border"
+            className="rounded-full"
           />
         </div>
 

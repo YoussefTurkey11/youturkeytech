@@ -2,10 +2,10 @@ import { Level, Status } from "@/validation/enroll/Enroll.schema";
 import { Pagination } from "./paginationType";
 
 export enum Sources {
-  YouTube = "Instagram",
-  Instagram = "Facebook",
-  Facebook = "LinkedIn",
-  LinkedIn = "Friend",
+  YouTube = "Youtube",
+  Instagram = "Instagram",
+  Facebook = "Facebook",
+  LinkedIn = "LinkedIn",
   Other = "Other",
 }
 

@@ -1,20 +1,19 @@
 "use client";
 
-import { ArrowDown, ArrowUp, ArrowUpDown, Search } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Search, User2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "../../ui/skeleton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
 import { useTableSearch } from "@/hooks/(dashboard)/useTableSearch";
 import { useTableFilter } from "@/hooks/(dashboard)/useTableFilter";
 import { useTableSort } from "@/hooks/(dashboard)/useTableSort";
-import { User } from "@/types/userType";
 import { useTablePagination } from "@/hooks/(dashboard)/useTablePagination";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTranslations } from "next-intl";
+import { User } from "@/types/userType";
 
 const TABS = [
   { label: "All", value: "all" },
@@ -223,13 +222,9 @@ export function TableUsers({
                     <td className="p-3">{jobId}</td>
                     <td className="p-3">
                       <div className="flex items-center gap-2">
-                        <Image
-                          src={"/images/me.png"}
-                          width={20}
-                          height={20}
-                          alt={`${name} avatar`}
-                          loading="lazy"
-                        />
+                        <div className="border rounded-full p-1">
+                          <User2 size={20} />
+                        </div>
                         <span className="truncate">{name}</span>
                       </div>
                     </td>

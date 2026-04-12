@@ -35,6 +35,6 @@ export const stepsEnroll: StepType[] = [
     labelAr: "التفاصيل",
     labelEn: "Details",
     content: (form) => <DetailStep form={form} />,
-    fields: ["heardFrom"],
+    fields: ["source"],
   },
 ];

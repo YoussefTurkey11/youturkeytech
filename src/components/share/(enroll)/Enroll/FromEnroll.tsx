@@ -13,11 +13,17 @@ import {
 } from "@/validation/enroll/Enroll.schema";
 import SuccessScreen from "./steps/SuccessScreen";
 import { useLocale } from "next-intl";
+import { useCreateCourseApplicationMutation } from "@/redux/apis/courseApi";
+import { Sources } from "@/types/courseType";
+import { toast } from "sonner";
 
 const FormEnroll = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const locale = useLocale() as "en" | "ar";
+
+  const [createCourseApplication, { isLoading }] =
+    useCreateCourseApplicationMutation();
 
   const form = useForm<EnrollFormData>({
     resolver: zodResolver(enrollSchema),
@@ -30,19 +36,72 @@ const FormEnroll = () => {
       hasExperience: false,
       goal: "",
       notes: "",
-      heardFrom: "",
+      source: "",
       status: Status.Pending,
       couponCode: "",
       createdAt: new Date(),
     },
   });
 
+  const transformToApiPayload = (data: EnrollFormData) => {
+    let source: Sources;
+    switch (data.source) {
+      case "Instagram":
+        source = Sources.Instagram;
+        break;
+      case "Facebook":
+        source = Sources.Facebook;
+        break;
+      case "Linkedin":
+        source = Sources.LinkedIn;
+        break;
+      case "Youtube":
+        source = Sources.YouTube;
+        break;
+      default:
+        source = Sources.Other;
+    }
+
+    let level: Level;
+    switch (data.level.toLowerCase()) {
+      case "beginner":
+        level = Level.Beginner;
+        break;
+      case "intermediate":
+        level = Level.Intermediate;
+        break;
+      case "advanced":
+        level = Level.Advanced;
+        break;
+      default:
+        level = Level.Beginner;
+    }
+
+    return {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      level: level,
+      hasExperience: data.hasExperience,
+      goal: data.goal || "",
+      source: source,
+      notes: data.notes || "",
+    };
+  };
+
   const onSubmit = async (data: EnrollFormData) => {
     try {
-      console.log("Submitting enrollment data:", data);
+      const payload = transformToApiPayload(data);
+      await createCourseApplication(payload).unwrap();
+      toast.success(
+        locale === "en"
+          ? "Application submitted successfully!"
+          : "تم إرسال الطلب بنجاح!",
+      );
       setIsSubmitted(true);
     } catch (error) {
       console.error("Submission failed:", error);
+      toast.error(error as string);
     }
   };
 
@@ -69,7 +128,7 @@ const FormEnroll = () => {
   return (
     <div className="mx-auto max-w-2xl space-y-8 px-5">
       <AnimatedStepper
-        allowClickNavigation
+        allowClickNavigation={!isLoading}
         currentStep={currentStep}
         onStepChange={setCurrentStep}
         steps={stepsEnroll.map((step) => ({

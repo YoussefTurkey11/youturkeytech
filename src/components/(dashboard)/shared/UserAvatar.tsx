@@ -43,7 +43,7 @@ const UserAvatar = () => {
             </div>
 
             <Image
-              src="/images/me.png"
+              src="/images/admin.png"
               width={40}
               height={40}
               alt="user"

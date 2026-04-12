@@ -41,7 +41,7 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
           </Label>
           <Select
             onValueChange={(value) =>
-              setValue("heardFrom", value as EnrollFormData["heardFrom"], {
+              setValue("source", value as EnrollFormData["source"], {
                 shouldDirty: true,
                 shouldValidate: true,
               })
@@ -53,16 +53,16 @@ const DetailStep = ({ form }: { form: UseFormReturn<EnrollFormData> }) => {
             <SelectContent className={"rounded-xl"}>
               <SelectGroup>
                 <SelectLabel>{t("detailStep.select")}</SelectLabel>
-                <SelectItem value="instagram">Instagram</SelectItem>
-                <SelectItem value="facebook">Facebook</SelectItem>
-                <SelectItem value="linkedin">LinkedIn</SelectItem>
-                <SelectItem value="friend">Friend / Referral</SelectItem>
-                <SelectItem value="other">{t("detailStep.other")}</SelectItem>
+                <SelectItem value="YouTube">Youtube</SelectItem>
+                <SelectItem value="Instagram">Instagram</SelectItem>
+                <SelectItem value="Facebook">Facebook</SelectItem>
+                <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                <SelectItem value="Other">{t("detailStep.other")}</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
-          {errors.heardFrom && (
-            <p className="text-red-500 text-sm">{errors.heardFrom.message}</p>
+          {errors.source && (
+            <p className="text-red-500 text-sm">{errors.source.message}</p>
           )}
         </section>
 

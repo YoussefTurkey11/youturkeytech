@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 export enum Level {
-  Beginner = "Beginner",
-  Intermediate = "Intermediate",
-  Advanced = "Advanced",
+  Beginner = "beginner",
+  Intermediate = "intermediate",
+  Advanced = "advanced",
 }
 
 export enum Status {
@@ -38,7 +38,7 @@ export const enrollSchema = z.object({
   goal: z.string().optional(),
   notes: z.string().optional(),
 
-  heardFrom: z.string().min(1, "Please tell us how you heard about us"),
+  source: z.string().min(1, "Please tell us how you heard about us"),
 
   status: z.nativeEnum(Status),
 

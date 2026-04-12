@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowUp, ArrowUpDown, Search } from "lucide-react";
+import { ArrowDown, ArrowUp, ArrowUpDown, Search, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "../../ui/skeleton";
 import Link from "next/link";
@@ -178,15 +178,10 @@ export function TableApplicantsAdmin({
                     <td className="p-3">{generateShortId(id, fullName)}</td>
                     <td className="p-3">
                       <div className="flex items-center gap-2">
-                        <Image
-                          src={"/images/me.png"}
-                          width={20}
-                          height={20}
-                          alt={`${name} avatar`}
-                          loading="lazy"
-                          className="rounded-full"
-                        />
-                        <div>
+                        <div className="border rounded-full p-1">
+                          <User size={20} />
+                        </div>
+                        <div className="flex flex-col">
                           <span className="truncate font-semibold">
                             {fullName}
                           </span>
