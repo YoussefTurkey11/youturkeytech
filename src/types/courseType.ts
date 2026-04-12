@@ -31,8 +31,8 @@ export type courseStatus = {
   source: Sources;
   notes: string;
   status: Status;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 };
 
 export type updateCourseStatusPayload = {

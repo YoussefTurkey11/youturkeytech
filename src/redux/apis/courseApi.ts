@@ -31,7 +31,7 @@ export const courseApi = api.injectEndpoints({
     >({
       query: ({ id, status }) => ({
         url: `/api/v1/course-applications/status/${id}`,
-        method: "POST",
+        method: "PATCH",
         body: { status },
       }),
       invalidatesTags: [{ type: "Courses", id: "LIST" }],

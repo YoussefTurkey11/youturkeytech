@@ -17,22 +17,33 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLocale, useTranslations } from "next-intl";
 import { courseStatus } from "@/types/courseType";
 import { generateShortId } from "@/utils/generateShortId";
-import { Level } from "@/validation/enroll/Enroll.schema";
+import { Level, Status } from "@/validation/enroll/Enroll.schema";
+import ActionApplicant from "./ActionApplicant";
 
-const TABS = [
+const LEVELTABS = [
   { label: "All", value: "all" },
   { label: Level.Beginner, value: Level.Beginner },
   { label: Level.Intermediate, value: Level.Intermediate },
   { label: Level.Advanced, value: Level.Advanced },
 ];
 
+const STATUSTABS = [
+  { label: "All", value: "all" },
+  { label: Status.Pending, value: Status.Pending },
+  { label: Status.Reviewed, value: Status.Reviewed },
+  { label: Status.Accepted, value: Status.Accepted },
+  { label: Status.Rejected, value: Status.Rejected },
+];
+
 const TABLE_HEAD = [
   "Id",
-  "fullName",
-  "email",
-  "phone",
-  "level",
-  "hasExperience",
+  "FullName",
+  "Email",
+  "Phone",
+  "Level",
+  "Has Experience",
+  "Status",
+  "Action",
 ];
 
 type SortKey = "id" | "fullName" | "email" | "phone";
@@ -60,16 +71,30 @@ export function TableApplicants({
 
   /* ---------------- filter ---------------- */
 
-  const { filter, setFilter, filteredRowsFilter } = useTableFilter(
+  const {
+    filter: levelFilter,
+    setFilter: setLevelFilter,
+    filteredRowsFilter: filteredByLevel,
+  } = useTableFilter(
     filteredRowsSearch,
     (row, filter) =>
       filter === "all" || row.level.toLowerCase() === filter.toLowerCase(),
   );
 
+  const {
+    filter: statusFilter,
+    setFilter: setStatusFilter,
+    filteredRowsFilter: filteredByStatus,
+  } = useTableFilter(
+    filteredByLevel,
+    (row, filter) =>
+      filter === "all" || row.status.toLowerCase() === filter.toLowerCase(),
+  );
+
   /* ---------------- sort ---------------- */
 
   const { sortedRows, handleSort, sortKey, sortDirection } =
-    useTableSort<courseStatus>(filteredRowsFilter);
+    useTableSort<courseStatus>(filteredByStatus);
 
   /* ---------------- pagination ---------------- */
 
@@ -117,19 +142,43 @@ export function TableApplicants({
       {/* Tabs + Search */}
 
       <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-        <Tabs
-          value={filter}
-          onValueChange={setFilter}
-          className="w-full md:w-max"
-        >
-          <TabsList>
-            {TABS.map(({ label, value }) => (
-              <TabsTrigger key={value} value={value} className="cursor-pointer">
-                {label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+        <div className="flex flex-col items-start gap-5">
+          <Tabs
+            value={levelFilter}
+            onValueChange={setLevelFilter}
+            className="w-full md:w-max"
+          >
+            <TabsList>
+              {LEVELTABS.map(({ label, value }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className="cursor-pointer"
+                >
+                  {label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+
+          <Tabs
+            value={statusFilter}
+            onValueChange={setStatusFilter}
+            className="w-full md:w-max"
+          >
+            <TabsList>
+              {STATUSTABS.map(({ label, value }) => (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className="cursor-pointer"
+                >
+                  {label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
+        </div>
 
         <div className="relative w-full md:w-72">
           <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
@@ -220,7 +269,18 @@ export function TableApplicants({
               </tr>
             ) : (
               paginatedRows.map(
-                ({ id, fullName, email, phone, level, hasExperience }) => (
+                ({
+                  id,
+                  fullName,
+                  email,
+                  phone,
+                  level,
+                  hasExperience,
+                  goal,
+                  source,
+                  status,
+                  notes,
+                }) => (
                   <tr key={id} className="border-border border-b last:border-0">
                     <td className="p-3">{generateShortId(id, fullName)}</td>
                     <td className="p-3">{fullName}</td>
@@ -235,6 +295,37 @@ export function TableApplicants({
                       >
                         {hasExperience ? "Yes" : "No"}
                       </Badge>
+                    </td>
+                    <td className="p-3">
+                      <Badge
+                        variant={
+                          status === "pending"
+                            ? "pending"
+                            : status === "reviewed"
+                              ? "review"
+                              : status === "accepted"
+                                ? "success"
+                                : "destructive"
+                        }
+                      >
+                        {status}
+                      </Badge>
+                    </td>
+                    <td className="p-3">
+                      <ActionApplicant
+                        applicants={{
+                          id,
+                          fullName,
+                          email,
+                          phone,
+                          level,
+                          hasExperience,
+                          goal,
+                          source,
+                          status,
+                          notes,
+                        }}
+                      />
                     </td>
                   </tr>
                 ),
