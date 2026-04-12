@@ -3,9 +3,12 @@ import { TableApplicants } from "@/components/(dashboard)/allCourseApplicants/Ta
 import ErrorPage from "@/components/(dashboard)/shared/ErrorPage";
 import StatsCards from "@/components/(dashboard)/shared/StatsCards";
 import Title from "@/components/(dashboard)/shared/Title";
+import { Button } from "@/components/ui/button";
 import { useGetAllCoursesApplicationQuery } from "@/redux/apis/courseApi";
+import { exportToExcel } from "@/utils/exportToExcel";
 import { Level } from "@/validation/enroll/Enroll.schema";
 import { Cat, GraduationCap, Newspaper, UserStar } from "lucide-react";
+import { toast } from "sonner";
 
 const AllCourseApplicants = () => {
   const {
@@ -41,11 +44,21 @@ const AllCourseApplicants = () => {
   const loading = isCoursesApplicationsLoading || isCoursesApplicationsFetching;
 
   return (
-    <div className="p-5">
-      <Title
-        title="Course Applications Overview"
-        subTitle="Monitoring 240+ students"
-      />
+    <section className="p-5">
+      <div className="flex items-center justify-between">
+        <Title
+          title="Course Applications Overview"
+          subTitle="Monitoring 240+ students"
+        />
+        <Button
+          onClick={() => {
+            exportToExcel(courseApplications);
+            toast.success("Export to Excel Sheet Successfully!");
+          }}
+        >
+          Export
+        </Button>
+      </div>
 
       {isCoursesApplicationsError && <ErrorPage />}
 
@@ -82,7 +95,7 @@ const AllCourseApplicants = () => {
       <div className="bg-card rounded-lg shadow p-5">
         <TableApplicants applicants={courseApplications} isFetching={loading} />
       </div>
-    </div>
+    </section>
   );
 };
 

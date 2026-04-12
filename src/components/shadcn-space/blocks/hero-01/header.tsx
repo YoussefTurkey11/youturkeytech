@@ -17,7 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import { Menu, X } from "lucide-react";
-import Logo from "@/assets/logo/logo";
+import Logo from "@/components/logo/logo";
 import { motion } from "motion/react";
 import { ThemeToggle } from "@/components/share/ThemeToggle";
 import EnrollmentForm from "@/components/share/(enroll)/Enroll/DialogFormEnroll";
