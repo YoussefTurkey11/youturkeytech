@@ -19,7 +19,7 @@ export function middleware(req: NextRequest) {
     "/admin",
     "/users",
     "/profile",
-    "/allCourseApplications",
+    "/allCourseApplicants",
   ];
 
   const isProtectedRoute = protectedRoutes.some((route) =>

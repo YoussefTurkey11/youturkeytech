@@ -5,8 +5,8 @@ import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { setSidebarHover } from "@/redux/slices/uiSlice";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import Logo from "@/assets/logo/logo";
 import Logout from "../../shared/Logout";
+import Logo from "../../shared/Logo";
 
 const SidebarDesktop = () => {
   const dispatch = useAppDispatch();
@@ -37,9 +37,7 @@ const SidebarDesktop = () => {
       "
     >
       <div>
-        <div className="border-b border-border pb-2.5">
-          <Logo />
-        </div>
+        <Logo />
         <ItemSidebar collapsed={!expanded} />
       </div>
 

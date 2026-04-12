@@ -203,5 +203,19 @@
       "updateFailed": "فشل تحديث بيانات المستخدم. يرجى المحاولة مرة أخرى.",
       "logoutSuccessfully": "تم تسجيل الخروج بنجاح"
     }
+  },
+  "courseApplicants": {
+    "table": {
+      "title": "قائمة المتقدمين",
+      "desc": "عرض معلومات جميع المتقدمين",
+      "viewAll": "عرض الكل",
+      "noApplicantsFound": "لا يوجد متقدمون"
+    },
+    "pagination": {
+      "previous": "السابق",
+      "next": "التالي",
+      "page": "الصفحة",
+      "of": "من"
+    }
   }
 }

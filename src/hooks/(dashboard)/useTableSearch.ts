@@ -1,6 +1,10 @@
 import { useMemo, useState } from "react";
 
-export function useTableSearch<T>(rows: T[], keys: (keyof T)[]) {
+export function useTableSearch<T>(
+  rows: T[],
+  keys: (keyof T)[],
+  customSearch?: (row: T) => string[],
+) {
   const [search, setSearch] = useState("");
 
   const filteredRowsSearch = useMemo(() => {
@@ -8,8 +12,9 @@ export function useTableSearch<T>(rows: T[], keys: (keyof T)[]) {
 
     const lower = search.toLowerCase();
 
-    return rows.filter((row) =>
-      keys.some((key) => {
+    return rows.filter((row) => {
+      // 🟢 search في keys العادية
+      const matchKeys = keys.some((key) => {
         const value = row[key];
 
         if (typeof value === "string") {
@@ -21,9 +26,16 @@ export function useTableSearch<T>(rows: T[], keys: (keyof T)[]) {
         }
 
         return false;
-      }),
-    );
-  }, [rows, search, keys]);
+      });
+
+      // 🟢 search في custom fields (زي shortId)
+      const matchCustom = customSearch
+        ? customSearch(row).some((val) => val.toLowerCase().includes(lower))
+        : false;
+
+      return matchKeys || matchCustom;
+    });
+  }, [rows, search, keys, customSearch]);
 
   return {
     search,

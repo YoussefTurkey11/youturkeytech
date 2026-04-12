@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import NotificationIcon from "../../shared/NotificationIcon";
 import { ThemeToggle } from "@/components/share/ThemeToggle";
 import UserAvatar from "../../shared/UserAvatar";
+import LanguageSwitcher from "@/components/share/LanguageSwitcher";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -40,6 +41,7 @@ const Header = () => {
 
       {/* Right */}
       <div className="flex items-center gap-3">
+        <LanguageSwitcher />
         <ThemeToggle />
         <NotificationIcon />
         <div className="w-px h-8 bg-border hidden sm:block"></div>

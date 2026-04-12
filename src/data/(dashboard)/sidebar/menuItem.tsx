@@ -27,9 +27,9 @@ export const menuItem: SidebarItem[] = [
     icon: <Receipt size={20} />,
     nested: [
       {
-        id: "allCourseApplications",
-        name: "All Applications",
-        link: "allCourseApplications",
+        id: "allCourseApplicants",
+        name: "All Applicants",
+        link: "allCourseApplicants",
         icon: <Scroll size={20} />,
       },
     ],

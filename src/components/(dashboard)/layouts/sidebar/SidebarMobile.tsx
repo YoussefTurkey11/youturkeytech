@@ -4,8 +4,8 @@ import ItemSidebar from "./ItemSidebar";
 import { RootState, useAppDispatch, useAppSelector } from "@/redux/store";
 import { closeSidebarMobile } from "@/redux/slices/uiSlice";
 import { motion } from "framer-motion";
-import Logo from "@/assets/logo/logo";
 import Logout from "../../shared/Logout";
+import Logo from "../../shared/Logo";
 
 const SidebarMobile = () => {
   const dispatch = useAppDispatch();

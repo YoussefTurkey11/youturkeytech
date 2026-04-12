@@ -200,5 +200,19 @@
       "updateFailed": "Failed to update user. Please try again.",
       "logoutSuccessfully": "Logout Successfully"
     }
+  },
+  "courseApplicants": {
+    "table": {
+      "title": "Applicants list",
+      "desc": "See information about all Applicants",
+      "viewAll": "View all",
+      "noApplicantsFound": "No Applicants found"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "of": "of"
+    }
   }
 }

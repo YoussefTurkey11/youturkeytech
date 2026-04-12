@@ -19,10 +19,7 @@ const Admin = () => {
 
   return (
     <div className="p-5">
-      <Title
-        title="Finance Overview"
-        subTitle="Monitoring 240+ assets across North Africa"
-      />
+      <Title title="Dashboard Overview" subTitle="Monitoring 240+ students" />
 
       {isCoursesApplicationsError && <ErrorPage />}
 
