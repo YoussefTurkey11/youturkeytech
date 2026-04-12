@@ -16,6 +16,7 @@ import { useLocale } from "next-intl";
 import { useCreateCourseApplicationMutation } from "@/redux/apis/courseApi";
 import { Sources } from "@/types/courseType";
 import { toast } from "sonner";
+import { Spinner } from "@/components/ui/spinner";
 
 const FormEnroll = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -150,14 +151,27 @@ const FormEnroll = () => {
         >
           {locale === "en" ? "Previous" : "السابق"}
         </Button>
-        <Button onClick={handleNext} className="rounded-full">
-          {currentStep === stepsEnroll.length - 1
-            ? locale === "en"
-              ? "Complete"
-              : "اكتمال"
-            : locale === "en"
-              ? "Continue"
-              : "متابعة"}
+        <Button
+          onClick={handleNext}
+          disabled={isLoading}
+          className="rounded-full"
+        >
+          {isLoading ? (
+            <>
+              <Spinner />
+              {locale === "en" ? "Submitting..." : "جاري الإرسال..."}
+            </>
+          ) : currentStep === stepsEnroll.length - 1 ? (
+            locale === "en" ? (
+              "Complete"
+            ) : (
+              "اكتمال"
+            )
+          ) : locale === "en" ? (
+            "Continue"
+          ) : (
+            "متابعة"
+          )}
         </Button>
       </div>
     </div>
