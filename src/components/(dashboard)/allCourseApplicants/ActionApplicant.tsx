@@ -5,16 +5,16 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
-import { Pencil, Trash2 } from "lucide-react";
+import { CircleChevronRight, CircleEllipsis, Pencil } from "lucide-react";
 import { Button } from "../../ui/button";
 import { useState } from "react";
 import { courseStatus } from "@/types/courseType";
 import EditApplicant from "./EditApplicant";
-// import EditTransaction from "./EditTransaction";
+import ViewMore from "./ViewMore";
 
 const ActionApplicant = ({ applicants }: { applicants: courseStatus }) => {
   const [openEdit, setOpenEdit] = useState(false);
-  const [openNote, setOpenNote] = useState(false);
+  const [openMore, setOpenMore] = useState(false);
 
   return (
     <>
@@ -22,26 +22,26 @@ const ActionApplicant = ({ applicants }: { applicants: courseStatus }) => {
         <DropdownMenuTrigger
           render={
             <Button variant="ghost" size="icon">
-              <Pencil className="h-4 w-4" />
+              <CircleEllipsis className="h-4 w-4" />
             </Button>
           }
         />
 
         <DropdownMenuContent align="end">
           <DropdownMenuItem
-            onClick={() => setOpenNote(true)}
-            className="cursor-pointer"
-          >
-            <Pencil className="mr-2 h-4 w-4" />
-            View Notes
-          </DropdownMenuItem>
-
-          <DropdownMenuItem
             onClick={() => setOpenEdit(true)}
             className="cursor-pointer"
           >
             <Pencil className="mr-2 h-4 w-4" />
             Edit
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            onClick={() => setOpenMore(true)}
+            className="cursor-pointer"
+          >
+            <CircleChevronRight className="mr-2 h-4 w-4" />
+            View More
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -51,6 +51,8 @@ const ActionApplicant = ({ applicants }: { applicants: courseStatus }) => {
         setOpen={setOpenEdit}
         applicant={applicants}
       />
+
+      <ViewMore open={openMore} setOpen={setOpenMore} applicant={applicants} />
     </>
   );
 };

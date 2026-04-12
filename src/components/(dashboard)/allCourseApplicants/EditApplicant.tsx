@@ -79,7 +79,7 @@ const EditApplicant = ({ open, setOpen, applicant }: Props) => {
         {isError && <ErrorPage />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="flex">
             <Controller
               name="status"
               control={control}
