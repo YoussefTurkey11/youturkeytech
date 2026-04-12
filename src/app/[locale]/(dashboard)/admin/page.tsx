@@ -1,9 +1,16 @@
 "use client";
+import { TableApplicantsAdmin } from "@/components/(dashboard)/admin/TableApplicantsAdmin";
 import ErrorPage from "@/components/(dashboard)/shared/ErrorPage";
 import StatsCards from "@/components/(dashboard)/shared/StatsCards";
 import Title from "@/components/(dashboard)/shared/Title";
 import { useGetAllCoursesApplicationQuery } from "@/redux/apis/courseApi";
-import { Newspaper } from "lucide-react";
+import { Status } from "@/validation/enroll/Enroll.schema";
+import {
+  CircleCheckBig,
+  CircleEllipsis,
+  CircleX,
+  Newspaper,
+} from "lucide-react";
 
 const Admin = () => {
   const {
@@ -14,6 +21,27 @@ const Admin = () => {
   } = useGetAllCoursesApplicationQuery();
 
   const courseApplications = allCoursesApplications?.data ?? [];
+
+  const normalize = (v: string) => v?.toLowerCase().trim();
+  const stats = courseApplications.reduce(
+    (acc, app) => {
+      acc.total++;
+
+      const status = normalize(app.status);
+
+      if (status === normalize(Status.Pending)) acc.pending++;
+      if (status === normalize(Status.Accepted)) acc.accepted++;
+      if (status === normalize(Status.Rejected)) acc.rejected++;
+
+      return acc;
+    },
+    {
+      total: 0,
+      pending: 0,
+      accepted: 0,
+      rejected: 0,
+    },
+  );
 
   const loading = isCoursesApplicationsLoading || isCoursesApplicationsFetching;
 
@@ -29,6 +57,30 @@ const Admin = () => {
           title={"Total Applications"}
           count={courseApplications.length ?? 0}
           loading={loading}
+        />
+
+        <StatsCards
+          icon={<CircleEllipsis size={25} />}
+          title={"Accepted"}
+          count={stats.accepted ?? 0}
+          loading={loading}
+          color="bg-success/10 text-success border border-success"
+        />
+
+        <StatsCards
+          icon={<CircleCheckBig size={25} />}
+          title={"Pending"}
+          count={stats.pending ?? 0}
+          loading={loading}
+          color="bg-pending/10 text-pending border border-pending"
+        />
+
+        <StatsCards
+          icon={<CircleX size={25} />}
+          title={"Rejected"}
+          count={stats.rejected ?? 0}
+          loading={loading}
+          color="bg-destructive/10 text-destructive border border-destructive"
         />
       </div>
 
@@ -50,12 +102,13 @@ const Admin = () => {
         </div>
       </div>
 
-      <div className="bg-card rounded-lg border p-5">
-        <TableTransactions
-          transactions={transaction}
-          isFetching={isTransactionFetching}
-        />
       </div> */}
+      <div className="bg-card rounded-lg border p-5">
+        <TableApplicantsAdmin
+          applicants={courseApplications}
+          isFetching={loading}
+        />
+      </div>
     </div>
   );
 };

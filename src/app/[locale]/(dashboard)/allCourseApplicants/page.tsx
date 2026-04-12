@@ -92,7 +92,7 @@ const AllCourseApplicants = () => {
         />
       </div>
 
-      <div className="bg-card rounded-lg shadow p-5">
+      <div className="bg-card rounded-lg border p-5">
         <TableApplicants applicants={courseApplications} isFetching={loading} />
       </div>
     </section>
