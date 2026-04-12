@@ -25,6 +25,7 @@ import LanguageSwitcher from "@/components/share/LanguageSwitcher";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useAdminPath } from "@/constants/adminPath";
+import AdminBtn from "@/components/share/AdminBtn";
 
 export type NavigationSection = {
   titleAr: string;
@@ -123,6 +124,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
         {/* Desktop CTA */}
         <div className="flex gap-4">
           <LanguageSwitcher />
+          <AdminBtn />
           <ThemeToggle />
           <div className="hidden lg:flex">
             <EnrollmentForm open={isDialogOpen} setOpen={setIsDialogOpen} />
