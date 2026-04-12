@@ -64,7 +64,7 @@ const Admin = () => {
           title={"Accepted"}
           count={stats.accepted ?? 0}
           loading={loading}
-          color="bg-success/10 text-success border border-success"
+          color="success"
         />
 
         <StatsCards
@@ -72,7 +72,7 @@ const Admin = () => {
           title={"Pending"}
           count={stats.pending ?? 0}
           loading={loading}
-          color="bg-pending/10 text-pending border border-pending"
+          color="pending"
         />
 
         <StatsCards
@@ -80,7 +80,7 @@ const Admin = () => {
           title={"Rejected"}
           count={stats.rejected ?? 0}
           loading={loading}
-          color="bg-destructive/10 text-destructive border border-destructive"
+          color="destructive"
         />
       </div>
 
