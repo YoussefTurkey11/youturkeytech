@@ -31,12 +31,7 @@ const StatsCards = ({
     );
 
   return (
-    <Card
-      className={cn(
-        "rounded-lg border-t-4 bg-card p-5 space-y-5",
-        `border-${color}`,
-      )}
-    >
+    <Card className="rounded-lg bg-card p-5 space-y-5">
       <div
         className={cn(
           "p-3 rounded-lg w-fit border",

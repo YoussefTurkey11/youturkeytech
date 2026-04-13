@@ -1,5 +1,8 @@
 "use client";
 import { TableApplicantsAdmin } from "@/components/(dashboard)/admin/TableApplicantsAdmin";
+import ChartBarLevel from "@/components/(dashboard)/shared/chartBar";
+import { ChartPieDonutExperience } from "@/components/(dashboard)/shared/ChartPieDonutExperience";
+import { ChartPieDonutSource } from "@/components/(dashboard)/shared/ChartPieDonutSource";
 import ErrorPage from "@/components/(dashboard)/shared/ErrorPage";
 import StatsCards from "@/components/(dashboard)/shared/StatsCards";
 import Title from "@/components/(dashboard)/shared/Title";
@@ -58,7 +61,6 @@ const Admin = () => {
           count={courseApplications.length ?? 0}
           loading={loading}
         />
-
         <StatsCards
           icon={<CircleEllipsis size={25} />}
           title={"Accepted"}
@@ -66,7 +68,6 @@ const Admin = () => {
           loading={loading}
           color="success"
         />
-
         <StatsCards
           icon={<CircleCheckBig size={25} />}
           title={"Pending"}
@@ -74,35 +75,34 @@ const Admin = () => {
           loading={loading}
           color="pending"
         />
-
         <StatsCards
           icon={<CircleX size={25} />}
           title={"Rejected"}
           count={stats.rejected ?? 0}
           loading={loading}
           color="destructive"
-        />
+        />{" "}
       </div>
 
-      {/* <div className="my-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="my-10 grid grid-cols-1 md:grid-cols-3 gap-5">
         <div className="col-span-2">
-          <ChartFinancial
-            totalBalance={totalBalance}
-            totalIncome={totalIncome}
-            totalExpenses={totalExpenses}
-            transactions={transaction ?? []}
+          <ChartBarLevel
+            applicants={courseApplications ?? []}
             loading={loading}
           />
         </div>
-        <div>
-          <ChartPieDonutFinancial
-            transactions={transaction ?? []}
+        <div className="flex flex-col gap-5">
+          <ChartPieDonutExperience
+            applicants={courseApplications ?? []}
+            loading={loading}
+          />
+          <ChartPieDonutSource
+            applicants={courseApplications ?? []}
             loading={loading}
           />
         </div>
       </div>
 
-      </div> */}
       <div className="bg-card rounded-lg border p-5">
         <TableApplicantsAdmin
           applicants={courseApplications}
