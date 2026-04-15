@@ -390,67 +390,51 @@ export const brandList: BrandList[] = [
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    nameAr: "أليسون داون",
-    nameEn: "Alison Dawn",
-    roleAr: "مطور",
-    roleEn: "Developer",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-1",
-    reviewAr:
-      "شكرًا جزيلاً على هذا المسار التعليمي الرائع! لقد تعلمت الكثير عن تطوير الويب وأشعر بثقة أكبر في مهاراتي الآن.",
-    reviewEn:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
+    name: "Hanin Hegazy",
+    role: "Frontend Developer",
+    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-3",
+    review: `انا في اول يوم اخدت فيه الكورس مع حضرتك يعتبر مكنش عندي اي خلفيه عن البرمجه و من هنا بدات اطول رحله كانت على ايد حضرتك اتعلمت كتير عن البرمجه و ازاي اعمل ويبسايت و كده و بصراحه في الاول واجهت صعوبات و تحديات كبيره في البدايه 
+            وبصراحه محتوى الكورس رهيب ما شاء الله و قوي جدا ويعتبر كافي لاي حد حابب يتعلم في الاول 
+            وبصراحه يعني اول مشروع ويبسايت اتعمل و لحظه التطوير لحد م طلع اول تصميم بورتفوليو كانت رحله مليانه بالانجازات الحمدلله 
+            غير طبعا طريقه التعامل و نظام المتابعه اللي حضرتك اتبعته معانا من اول يوم 
+            يعني من الاخر كده انا اتبسطت بالتجربه و خصوصا انها فتحت عيني على سكك كتير و رحلة تعلم طويله ف بجد شكرا على كل حاجه بجد ✨.....نفع الله بك البلاد و العباد و زادك من العلم و تحصيله 🤍`,
     rating: 4.5,
   },
   {
     id: 2,
-    nameAr: "دانيال بيتر",
-    nameEn: "Daniel Peter",
-    roleAr: "مصمم المنتج",
-    roleEn: "Product Designer",
+    name: "Mohamed Amara",
+    role: "Frontend Developer",
     image: "https://notion-avatars.netlify.app/api/avatar?preset=male-2",
-    reviewAr:
-      "شكرًا جزيلاً على هذا المسار التعليمي الرائع! لقد تعلمت الكثير عن تطوير الويب وأشعر بثقة أكبر في مهاراتي الآن.",
-    reviewEn:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
+    review:
+      "حبيبي يهندسة لا والله كان كورس مفيد لحد لسا داخل المجال جديد بحيث ياخذ فكرة عن عالم ال web و بصراحة المفروض يكون الكورس أطول لاكن انا شايف انك عملت الي عليك في توصيل المعلومة في الوقت الي كان متاح وشكرا ليك",
     rating: 5.0,
   },
   {
     id: 3,
-    nameAr: "سارة جونسون",
-    nameEn: "Sarah Johnson",
-    roleAr: "مالك مطعم",
-    roleEn: "Restaurant Owner",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-3",
-    reviewAr:
-      "شكرًا جزيلاً على هذا المسار التعليمي الرائع! لقد تعلمت الكثير عن تطوير الويب وأشعر بثقة أكبر في مهاراتي الآن.",
-    reviewEn:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
+    name: "Ali",
+    role: "Frontend Developer",
+    image: "https://notion-avatars.netlify.app/api/avatar?preset=male-3",
+    review: `وعليكم السلام
+            الكورس كان كويس اوي مثمر جدا استفدت منه كثير و من توجيهات حضرتك 
+            برغم إن عدي علي الكورس فتره إلا إني بذاكر لحد دلوقتي من الحاجات اللي حضرتك كنت بتبعتها`,
     rating: 4.8,
   },
   {
     id: 4,
-    nameAr: "مايكل تشين",
-    nameEn: "Michael Chen",
-    roleAr: "مُقيِّم طعام",
-    roleEn: "Food Critic",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=male-4",
-    reviewAr:
-      "شكرًا جزيلاً على هذا المسار التعليمي الرائع! لقد تعلمت الكثير عن تطوير الويب وأشعر بثقة أكبر في مهاراتي الآن.",
-    reviewEn:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
+    name: "Noureen",
+    role: "Frontend Developer",
+    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-4",
+    review:
+      "افضل حاجه بالنسبالي أن السيشن مكنتش ممله خالص مع انها طويله و كانت تفاعليه و جزء الجيمز و المنافسه ال فيها حلوه جدا و الشرح  و التطبيقات ال كنا بنعملها حلوه جدا الفكره بس أن كله يخلص التطبيق ال عليه كامله عشان اوقات بيبقي فاضل جزء و يتنقل علي التطبيق ال بعده و شكرا جدا ل حضرتك استفدت فعلا كتير",
     rating: 4.9,
   },
   {
     id: 5,
-    nameAr: "إما ويلسون",
-    nameEn: "Emma Wilson",
-    roleAr: "رئيسة طهاة",
-    roleEn: "Chef",
-    image: "https://notion-avatars.netlify.app/api/avatar?preset=female-2",
-    reviewAr:
-      "شكرًا جزيلاً على هذا المسار التعليمي الرائع! لقد تعلمت الكثير عن تطوير الويب وأشعر بثقة أكبر في مهاراتي الآن.",
-    reviewEn:
-      "Pellentesque in ip sum dolor amet tellus vestibulum tincidunt. Pellentesque dignissim quis turpis quis faucibus.",
+    name: "Hessain",
+    role: "Frontend Developer",
+    image: "https://notion-avatars.netlify.app/api/avatar?preset=male-5",
+    review:
+      "والله الكورس كان جميل ومفيد جدًا، جزء الفرونت بالذات اتعلمت فيه حاجات كتير",
     rating: 4.7,
   },
 ];

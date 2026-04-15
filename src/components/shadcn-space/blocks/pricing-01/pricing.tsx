@@ -1,5 +1,6 @@
 "use client";
 
+import EnrollmentForm from "@/components/share/(enroll)/Enroll/DialogFormEnroll";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -7,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Check } from "lucide-react";
 import { motion } from "motion/react";
 import { useLocale } from "next-intl";
+import { useState } from "react";
 
 type PricingPlan = {
   plan_bg_color: string;
@@ -52,6 +54,7 @@ const pricingData: PricingPlan[] = [
 
 const Pricing = () => {
   const locale = useLocale();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <section className="bg-background py-10 xl:py-0 scroll-mt-10" id="roadmap">
@@ -101,11 +104,15 @@ const Pricing = () => {
                   <CardContent className="flex flex-col sm:flex-row gap-6 md:gap-10 items-start self-stretch px-0 h-full lg:h-50 w-full">
                     <div className="flex flex-col items-start justify-between self-stretch gap-6">
                       <div className="flex flex-col gap-3">
-                        <Badge className="py-1 px-3 text-sm font-normal leading-5 w-fit h-7">
-                          {locale === "en"
-                            ? items.plan_nameEn
-                            : items.plan_nameAr}
-                        </Badge>
+                        <EnrollmentForm
+                          open={isDialogOpen}
+                          setOpen={setIsDialogOpen}
+                          text={
+                            locale === "en"
+                              ? items.plan_nameEn
+                              : items.plan_nameAr
+                          }
+                        />
                         <p className="text-sm font-normal text-muted-foreground w-full sm:max-w-56">
                           {locale === "en"
                             ? items.plan_descpEn

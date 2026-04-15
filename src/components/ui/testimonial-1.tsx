@@ -47,13 +47,10 @@ import { testimonials } from "@/data/db";
 
 export interface Testimonial {
   id: number;
-  nameAr: string;
-  nameEn: string;
-  roleAr: string;
-  roleEn: string;
-  image: string;
-  reviewAr: string;
-  reviewEn: string;
+  name: string;
+  role: string;
+  image?: string;
+  review: string;
   rating: number;
 }
 
@@ -123,46 +120,36 @@ export function TestimonialPage({ className }: { className?: string }) {
             {testimonials.map((testimonial) => (
               <CarouselItem
                 key={testimonial.id}
-                className="basis-full px-4 last:pe-0 sm:basis-1/2 lg:basis-1/3"
+                className="group basis-full px-4 last:pe-0 sm:basis-1/2 lg:basis-1/3"
               >
                 <Card className="h-full overflow-hidden">
                   <CardHeader className="gap-0">
                     <div className="flex items-center gap-4">
                       <Avatar className="bg-muted size-12">
-                        <AvatarImage
-                          src={testimonial.image}
-                          alt={
-                            locale === "ar"
-                              ? testimonial.nameAr
-                              : testimonial.nameEn
-                          }
-                          className="size-12"
-                        />
+                        {testimonial.image && (
+                          <AvatarImage
+                            src={testimonial.image}
+                            alt={testimonial.name}
+                            className="size-12"
+                          />
+                        )}
                         <AvatarFallback className="bg-card">
-                          {locale === "ar"
-                            ? testimonial.nameAr[0]
-                            : testimonial.nameEn[0]}
+                          {testimonial.name}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <CardTitle className="text-foreground font-semibold">
-                          {locale === "ar"
-                            ? testimonial.nameAr
-                            : testimonial.nameEn}
+                          {testimonial.name}
                         </CardTitle>
                         <p className="text-muted-foreground text-sm">
-                          {locale === "ar"
-                            ? testimonial.roleAr
-                            : testimonial.roleEn}
+                          {testimonial.role}
                         </p>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">
-                      {locale === "ar"
-                        ? testimonial.reviewAr
-                        : testimonial.reviewEn}
+                    <p className="text-right text-muted-foreground line-clamp-4 overflow-hidden max-h-24 transition-all duration-300 ease-in-out group-hover:line-clamp-none group-hover:max-h-80">
+                      {testimonial.review}
                     </p>
                   </CardContent>
                   <CardFooter>

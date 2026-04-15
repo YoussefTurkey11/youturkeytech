@@ -11,10 +11,12 @@ const DialogFormEnroll = ({
   open,
   setOpen,
   setIsOpenSheet,
+  text,
 }: {
   open?: boolean;
   setOpen?: (open: boolean) => void;
   setIsOpenSheet?: (open: boolean) => void;
+  text?: string;
 }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -27,7 +29,7 @@ const DialogFormEnroll = ({
           }, 0);
         }}
       >
-        <Enroll />
+        <Enroll text={text} />
       </div>
 
       <DialogContent className="w-full max-w-90 sm:max-w-4xl p-0">

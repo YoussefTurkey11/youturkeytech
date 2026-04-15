@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-const Enroll = ({ className }: { className?: string }) => {
+const Enroll = ({ text, className }: { text?: string; className?: string }) => {
   const t = useTranslations("CTAButton");
 
   return (
@@ -18,7 +18,7 @@ const Enroll = ({ className }: { className?: string }) => {
       )}
     >
       <span className="relative z-10 transition-all duration-500">
-        {t("enrollNow")}
+        {text ?? t("enrollNow")}
       </span>
       <span
         className={cn(
