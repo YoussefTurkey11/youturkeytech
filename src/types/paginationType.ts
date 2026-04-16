@@ -3,8 +3,9 @@ export type ApiResponsePagination = {
 };
 
 export type Pagination = {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
+  currentPage: number;
+  limit: number;
+  totalDocs: number;
+  totalPages: number;
+  next: number;
 };

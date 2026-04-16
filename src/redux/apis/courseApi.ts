@@ -9,8 +9,14 @@ import { api } from "../baseApi";
 export const courseApi = api.injectEndpoints({
   endpoints: (builder) => ({
     // Get All Courses Application
-    getAllCoursesApplication: builder.query<courseApiResponse, void>({
-      query: () => `/api/v1/course-applications`,
+    getAllCoursesApplication: builder.query<courseApiResponse, number>({
+      query: (page = 1) => `/api/v1/course-applications?page=${page}`,
+      providesTags: [{ type: "Courses", id: "LIST" }],
+    }),
+
+    // Get All Courses Application (Stats)
+    getAllCoursesApplicationStats: builder.query<courseApiResponse, void>({
+      query: () => `/api/v1/course-applications?limit=1000`,
       providesTags: [{ type: "Courses", id: "LIST" }],
     }),
 
@@ -41,6 +47,7 @@ export const courseApi = api.injectEndpoints({
 
 export const {
   useGetAllCoursesApplicationQuery,
+  useGetAllCoursesApplicationStatsQuery,
   useCreateCourseApplicationMutation,
   useUpdateCourseApplicationStatusMutation,
 } = courseApi;

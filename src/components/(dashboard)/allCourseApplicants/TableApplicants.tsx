@@ -17,6 +17,8 @@ import { courseStatus } from "@/types/courseType";
 import { generateShortId } from "@/utils/generateShortId";
 import { Level, Status } from "@/validation/enroll/Enroll.schema";
 import ActionApplicant from "./ActionApplicant";
+import { Pagination } from "@/types/paginationType";
+import { useGetAllCoursesApplicationStatsQuery } from "@/redux/apis/courseApi";
 
 const LEVELTABS = [
   { label: "All", value: "all" },
@@ -49,11 +51,20 @@ type SortKey = "id" | "fullName" | "email" | "phone";
 export function TableApplicants({
   applicants,
   isFetching,
+  pagination,
+  page,
+  setPage,
 }: {
   applicants: courseStatus[];
   isFetching: boolean;
+  pagination: Pagination;
+  page: number;
+  setPage: (page: number) => void;
 }) {
-  const rows = applicants ?? [];
+  const { data: allStats, isLoading: isLoadingStats } =
+    useGetAllCoursesApplicationStatsQuery();
+
+  const allStatsData = allStats?.data ?? [];
   const skeletonRows = Array.from({ length: 3 });
   const pathname = usePathname();
   const t = useTranslations("courseApplicants");
@@ -62,7 +73,7 @@ export function TableApplicants({
   /* ---------------- search ---------------- */
 
   const { search, setSearch, filteredRowsSearch } = useTableSearch(
-    rows,
+    applicants,
     ["fullName", "email", "phone"],
     (row) => [generateShortId(row.id, row.fullName)],
   );
@@ -96,8 +107,18 @@ export function TableApplicants({
 
   /* ---------------- pagination ---------------- */
 
-  const { paginatedRows, page, pageCount, nextPage, prevPage } =
-    useTablePagination(sortedRows, 8);
+  // const { paginatedRows, page, pageCount, nextPage, prevPage } =
+  //   useTablePagination(sortedRows, 8);
+  const nextPage = () => {
+    if (pagination?.next) {
+      setPage(pagination.next);
+    }
+  };
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
 
   /* ---------------- helpers ---------------- */
 
@@ -256,17 +277,17 @@ export function TableApplicants({
                   </td>
                 </tr>
               ))
-            ) : paginatedRows.length === 0 ? (
+            ) : sortedRows.length === 0 ? (
               <tr>
                 <td
-                  colSpan={7}
+                  colSpan={8}
                   className="text-center py-6 text-muted-foreground"
                 >
                   {t("table.noApplicantsFound")}
                 </td>
               </tr>
             ) : (
-              paginatedRows.map(
+              sortedRows.map(
                 ({
                   id,
                   fullName,
@@ -337,7 +358,8 @@ export function TableApplicants({
 
       <div className="border-border flex items-center justify-between border-t py-4">
         <span className="text-muted-foreground text-sm">
-          {t("pagination.page")} {page} {t("pagination.of")} {pageCount}
+          {t("pagination.page")} {pagination?.currentPage} {t("pagination.of")}{" "}
+          {pagination?.totalPages}
         </span>
 
         <div className="flex gap-2">
@@ -354,7 +376,7 @@ export function TableApplicants({
             variant="outline"
             size="sm"
             onClick={nextPage}
-            disabled={page === pageCount}
+            disabled={!pagination?.next}
           >
             {t("pagination.next")}
           </Button>

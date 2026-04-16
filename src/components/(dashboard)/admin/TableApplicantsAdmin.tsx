@@ -14,6 +14,7 @@ import { courseStatus } from "@/types/courseType";
 import { generateShortId } from "@/utils/generateShortId";
 import Image from "next/image";
 import ActionApplicantAdmin from "./ActionApplicantAdmin";
+import { Pagination } from "@/types/paginationType";
 
 const TABLE_HEAD = ["ID", "Recent Applicants", "Action"];
 
@@ -22,9 +23,15 @@ type SortKey = "id" | "fullName";
 export function TableApplicantsAdmin({
   applicants,
   isFetching,
+  pagination,
+  page,
+  setPage,
 }: {
   applicants: courseStatus[];
   isFetching: boolean;
+  pagination: Pagination;
+  page: number;
+  setPage: (page: number) => void;
 }) {
   const rows = applicants ?? [];
   const skeletonRows = Array.from({ length: 3 });
@@ -69,8 +76,18 @@ export function TableApplicantsAdmin({
 
   /* ---------------- pagination ---------------- */
 
-  const { paginatedRows, page, pageCount, nextPage, prevPage } =
-    useTablePagination(sortedRows, 8);
+  // const { paginatedRows, page, pageCount, nextPage, prevPage } =
+  //   useTablePagination(sortedRows, 8);
+  const nextPage = () => {
+    if (pagination?.next) {
+      setPage(pagination.next);
+    }
+  };
+  const prevPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
 
   /* ---------------- helpers ---------------- */
 
@@ -151,7 +168,7 @@ export function TableApplicantsAdmin({
                   </td>
                 </tr>
               ))
-            ) : paginatedRows.length === 0 ? (
+            ) : sortedRows.length === 0 ? (
               <tr>
                 <td
                   colSpan={7}
@@ -161,7 +178,7 @@ export function TableApplicantsAdmin({
                 </td>
               </tr>
             ) : (
-              paginatedRows.map(
+              sortedRows.map(
                 ({
                   id,
                   fullName,
@@ -217,7 +234,8 @@ export function TableApplicantsAdmin({
 
       <div className="border-border flex items-center justify-between border-t py-4">
         <span className="text-muted-foreground text-sm">
-          {t("pagination.page")} {page} {t("pagination.of")} {pageCount}
+          {t("pagination.page")} {pagination?.currentPage} {t("pagination.of")}{" "}
+          {pagination?.totalPages}
         </span>
 
         <div className="flex gap-2">
@@ -234,7 +252,7 @@ export function TableApplicantsAdmin({
             variant="outline"
             size="sm"
             onClick={nextPage}
-            disabled={page === pageCount}
+            disabled={!pagination?.next}
           >
             {t("pagination.next")}
           </Button>

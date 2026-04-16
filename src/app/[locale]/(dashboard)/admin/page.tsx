@@ -6,7 +6,10 @@ import { ChartPieDonutSource } from "@/components/(dashboard)/shared/ChartPieDon
 import ErrorPage from "@/components/(dashboard)/shared/ErrorPage";
 import StatsCards from "@/components/(dashboard)/shared/StatsCards";
 import Title from "@/components/(dashboard)/shared/Title";
-import { useGetAllCoursesApplicationQuery } from "@/redux/apis/courseApi";
+import {
+  useGetAllCoursesApplicationQuery,
+  useGetAllCoursesApplicationStatsQuery,
+} from "@/redux/apis/courseApi";
 import { Status } from "@/validation/enroll/Enroll.schema";
 import {
   CircleCheckBig,
@@ -14,19 +17,27 @@ import {
   CircleX,
   Newspaper,
 } from "lucide-react";
+import { useState } from "react";
 
 const Admin = () => {
+  const [page, setPage] = useState(1);
+
   const {
     data: allCoursesApplications,
     isLoading: isCoursesApplicationsLoading,
     isFetching: isCoursesApplicationsFetching,
     isError: isCoursesApplicationsError,
-  } = useGetAllCoursesApplicationQuery();
+  } = useGetAllCoursesApplicationQuery(page);
+
+  const { data: allStats, isLoading: isLoadingStats } =
+    useGetAllCoursesApplicationStatsQuery();
 
   const courseApplications = allCoursesApplications?.data ?? [];
+  const allStatsData = allStats?.data ?? [];
+  const pagination = allCoursesApplications?.paginationResult;
 
   const normalize = (v: string) => v?.toLowerCase().trim();
-  const stats = courseApplications.reduce(
+  const stats = allStatsData.reduce(
     (acc, app) => {
       acc.total++;
 
@@ -58,30 +69,30 @@ const Admin = () => {
         <StatsCards
           icon={<Newspaper size={25} />}
           title={"Total Applications"}
-          count={courseApplications.length ?? 0}
-          loading={loading}
+          count={stats.total ?? 0}
+          loading={isLoadingStats}
         />
         <StatsCards
           icon={<CircleEllipsis size={25} />}
           title={"Accepted"}
           count={stats.accepted ?? 0}
-          loading={loading}
+          loading={isLoadingStats}
           color="success"
         />
         <StatsCards
           icon={<CircleCheckBig size={25} />}
           title={"Pending"}
           count={stats.pending ?? 0}
-          loading={loading}
+          loading={isLoadingStats}
           color="pending"
         />
         <StatsCards
           icon={<CircleX size={25} />}
           title={"Rejected"}
           count={stats.rejected ?? 0}
-          loading={loading}
+          loading={isLoadingStats}
           color="destructive"
-        />{" "}
+        />
       </div>
 
       <div className="my-10 grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -104,10 +115,15 @@ const Admin = () => {
       </div>
 
       <div className="bg-card rounded-lg border p-5">
-        <TableApplicantsAdmin
-          applicants={courseApplications}
-          isFetching={loading}
-        />
+        {pagination && (
+          <TableApplicantsAdmin
+            applicants={courseApplications}
+            isFetching={loading}
+            pagination={pagination}
+            page={page}
+            setPage={setPage}
+          />
+        )}
       </div>
     </div>
   );

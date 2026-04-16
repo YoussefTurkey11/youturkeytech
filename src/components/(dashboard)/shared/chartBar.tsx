@@ -330,12 +330,6 @@ const ChartBarLevel = ({
                         <p className="text-muted-foreground">Percentage</p>
                         <p className="font-semibold">{level.percentage}%</p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-muted-foreground">Total Amount</p>
-                        <p className="font-semibold">
-                          ${level.totalAmount.toLocaleString()}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 ))}

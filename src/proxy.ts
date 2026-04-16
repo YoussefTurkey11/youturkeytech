@@ -5,7 +5,7 @@ import type { NextRequest } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
   const segments = pathname.split("/").filter(Boolean);
   const locale =
@@ -38,7 +38,8 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}/admin`, req.url));
   }
 
-  return intlMiddleware(req);
+  const response = intlMiddleware(req);
+  return response ?? NextResponse.next();
 }
 
 export const config = {
