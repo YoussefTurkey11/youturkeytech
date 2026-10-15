@@ -1,7 +1,7 @@
-import { AccordionItem } from "@/components/shadcn-space/accordion/accordion-07";
-import { BrandList } from "@/components/shadcn-space/blocks/hero-01/brand-slider";
-import { NavigationSection } from "@/components/shadcn-space/blocks/hero-01/header";
-import { AvatarList } from "@/components/shadcn-space/blocks/hero-01/hero";
+import { AccordionItem } from "@/components/(course)/shadcn-space/accordion/accordion-07";
+import { BrandList } from "@/components/(course)/shadcn-space/blocks/hero-01/brand-slider";
+import { NavigationSection } from "@/components/(course)/shadcn-space/blocks/hero-01/header";
+import { AvatarList } from "@/components/(course)/shadcn-space/blocks/hero-01/hero";
 import { Testimonial } from "@/components/ui/testimonial-1";
 
 export const navigationData: NavigationSection[] = [

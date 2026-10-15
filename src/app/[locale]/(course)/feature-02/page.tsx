@@ -1,0 +1,7 @@
+import Feature02 from "@/components/(course)/shadcn-space/blocks/feature-02";
+
+const page = () => {
+  return <Feature02 />;
+};
+
+export default page;

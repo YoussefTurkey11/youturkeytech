@@ -1,5 +1,5 @@
 "use client";
-import Feature from "@/components/shadcn-space/blocks/feature-02/feature";
+import Feature from "@/components/(course)/shadcn-space/blocks/feature-02/feature";
 import { CheckCircle, CirclePlay, ScreenShare } from "lucide-react";
 
 const featureData = [

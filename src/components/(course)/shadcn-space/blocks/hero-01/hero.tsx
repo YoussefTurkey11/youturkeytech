@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import DialogPreview from "@/components/share/(enroll)/Enroll/DialogPreview";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -85,7 +86,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   <ul className="avatar flex flex-row items-center">
                     {avatarList.map((avatar, index) => (
                       <li key={index} className="-mr-2 z-1 avatar-hover:ml-2">
-                        <img
+                        <Image
                           src={avatar.image}
                           alt="Avatar"
                           width={40}
@@ -98,10 +99,12 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   <div className="gap-1 flex flex-col items-start">
                     <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, index) => (
-                        <img
+                        <Image
                           key={index}
                           src="https://images.shadcnspace.com/assets/svgs/icon-star.svg"
                           alt="star"
+                          width={16}
+                          height={16}
                           className="h-4 w-4"
                         />
                       ))}

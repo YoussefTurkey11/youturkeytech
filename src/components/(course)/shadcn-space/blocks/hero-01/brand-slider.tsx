@@ -1,5 +1,5 @@
 "use client";
-import { Marquee } from "@/components/shadcn-space/animations/marquee";
+import { Marquee } from "@/components/(course)/shadcn-space/animations/marquee";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";

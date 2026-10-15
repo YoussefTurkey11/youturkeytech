@@ -48,13 +48,15 @@ const DialogPreview = () => {
 
         <div className="w-full aspect-video">
           <iframe
-            src="https://www.youtube.com/embed/E3teHDB0KDw"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/o0TB64-BTnI?si=_uoc9-7LWk5nsdaS"
             title="YouTube video player"
-            className="w-full h-full"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-          />
+          ></iframe>
         </div>
       </DialogContent>
     </Dialog>
