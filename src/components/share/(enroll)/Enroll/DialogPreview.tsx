@@ -41,15 +41,14 @@ const DialogPreview = () => {
         }
       />
 
-      <DialogContent className="max-w-7xl p-0 overflow-hidden">
+      <DialogContent className="max-w-7xl p-0 gap-0 overflow-hidden">
         <DialogHeader className="hidden">
           <DialogTitle></DialogTitle>
         </DialogHeader>
 
         <div className="w-full aspect-video">
           <iframe
-            width="560"
-            height="315"
+            className="w-full h-full"
             src="https://www.youtube.com/embed/o0TB64-BTnI?si=_uoc9-7LWk5nsdaS"
             title="YouTube video player"
             frameBorder="0"
